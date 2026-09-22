@@ -184,67 +184,188 @@
           </span>
           <h2 data-i18n="cohorts_title">Prochaines cohortes</h2>
         </div>
-        <div class="cohorts-grid">
-          <div class="cohort-card cohort-card-open">
-            <span class="cohort-status status-open" data-i18n="cohort_status_open">Ouvert</span>
-            <h3 data-i18n="cohort_winter">Cohorte — Hiver</h3>
-            <div class="cohort-detail">
-              <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 3" />
-              </svg>
-              <span data-i18n="cohort_deadline">Date limite : [DATE LIMITE]</span>
-            </div>
-            <div class="cohort-detail">
-              <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="3" y="5" width="18" height="16" rx="2" />
-                <path d="M3 10h18M8 3v4M16 3v4" />
-              </svg>
-              <span data-i18n="cohort_start">Début du programme : [DATE DE DÉBUT]</span>
-            </div>
-            <a href="#candidature" class="cohort-link" data-i18n="cohort_apply_link">Faire une demande →</a>
-          </div>
-          <div class="cohort-card">
-            <span class="cohort-status" data-i18n="cohort_status_upcoming">À venir</span>
-            <h3 data-i18n="cohort_spring">Cohorte — Printemps</h3>
-            <div class="cohort-detail">
-              <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 3" />
-              </svg>
-              <span data-i18n="cohort_deadline">Date limite : [DATE LIMITE]</span>
-            </div>
-            <div class="cohort-detail">
-              <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="3" y="5" width="18" height="16" rx="2" />
-                <path d="M3 10h18M8 3v4M16 3v4" />
-              </svg>
-              <span data-i18n="cohort_start">Début du programme : [DATE DE DÉBUT]</span>
+        <div class="cohorts-timeline">
+          <div class="timeline-track" aria-hidden="true"></div>
+          <div class="timeline-item timeline-item-open">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="cohort-status status-open" data-i18n="cohort_status_open">Ouvert</span>
+              <h3 data-i18n="cohort_winter">Cohorte — Hiver</h3>
+              <div class="cohort-detail">
+                <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 3" />
+                </svg>
+                <span data-i18n="cohort_winter_deadline">Date limite : 15&nbsp;novembre&nbsp;2026,
+                  23&nbsp;h&nbsp;59</span>
+              </div>
+              <div class="cohort-detail">
+                <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="5" width="18" height="16" rx="2" />
+                  <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg>
+                <span data-i18n="cohort_winter_start">Début du programme : 11&nbsp;janvier&nbsp;2027,
+                  9&nbsp;h&nbsp;00</span>
+              </div>
+              <a href="#candidature" class="cohort-link" data-i18n="cohort_apply_link">Faire une demande →</a>
             </div>
           </div>
-          <div class="cohort-card">
-            <span class="cohort-status" data-i18n="cohort_status_upcoming">À venir</span>
-            <h3 data-i18n="cohort_summer">Cohorte — Été</h3>
-            <div class="cohort-detail">
-              <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 3" />
-              </svg>
-              <span data-i18n="cohort_deadline">Date limite : [DATE LIMITE]</span>
+          <div class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="cohort-status" data-i18n="cohort_status_upcoming">À venir</span>
+              <h3 data-i18n="cohort_spring">Cohorte — Printemps</h3>
+              <div class="cohort-detail">
+                <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 3" />
+                </svg>
+                <span data-i18n="cohort_spring_deadline">Date limite : 14&nbsp;février&nbsp;2027,
+                  23&nbsp;h&nbsp;59</span>
+              </div>
+              <div class="cohort-detail">
+                <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="5" width="18" height="16" rx="2" />
+                  <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg>
+                <span data-i18n="cohort_spring_start">Début du programme : 5&nbsp;avril&nbsp;2027,
+                  9&nbsp;h&nbsp;00</span>
+              </div>
             </div>
-            <div class="cohort-detail">
-              <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="3" y="5" width="18" height="16" rx="2" />
-                <path d="M3 10h18M8 3v4M16 3v4" />
-              </svg>
-              <span data-i18n="cohort_start">Début du programme : [DATE DE DÉBUT]</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="cohort-status" data-i18n="cohort_status_upcoming">À venir</span>
+              <h3 data-i18n="cohort_summer">Cohorte — Été</h3>
+              <div class="cohort-detail">
+                <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 3" />
+                </svg>
+                <span data-i18n="cohort_summer_deadline">Date limite : 16&nbsp;mai&nbsp;2027, 23&nbsp;h&nbsp;59</span>
+              </div>
+              <div class="cohort-detail">
+                <svg class="cohort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="5" width="18" height="16" rx="2" />
+                  <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg>
+                <span data-i18n="cohort_summer_start">Début du programme : 5&nbsp;juillet&nbsp;2027,
+                  9&nbsp;h&nbsp;00</span>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" aria-roledescription="carousel">
+      <div class="container">
+        <div class="section-intro center">
+          <span class="kicker kicker-light" data-i18n="testimonials_kicker">Témoignages</span>
+          <h2 data-i18n="testimonials_title">Ils ont fait le saut</h2>
+        </div>
+        <div class="testimonial-slider">
+          <div class="testimonial-viewport">
+            <div class="testimonial-track">
+              <figure class="testimonial-slide">
+                <svg class="testimonial-quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"
+                  aria-hidden="true">
+                  <path
+                    d="M9.5 6C6.5 6.8 4.5 9.4 4.5 12.8V18h5.5v-5.5H7.4c0-2 1.1-3.6 2.8-4.2L9.5 6zm9 0c-3 .8-5 3.4-5 6.8V18H19v-5.5h-2.6c0-2 1.1-3.6 2.8-4.2L18.5 6z" />
+                </svg>
+                <blockquote data-i18n="t1_quote">Le diagnostic m'a donné une feuille de route claire. En six mois, j'ai
+                  ouvert ma boulangerie et embauché deux employés.</blockquote>
+                <figcaption class="testimonial-author">
+                  <div class="testimonial-avatar">
+                    <span>AF</span>
+                    <img src="https://images.unsplash.com/photo-1619895862022-09114b41f16f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D" alt="Amélie Fortin">
+                  </div>
+                  <div class="testimonial-meta">
+                    <strong>Amélie Fortin</strong>
+                    <span data-i18n="t1_role">Fondatrice — Boulangerie La Mie Dorée</span>
+                  </div>
+                </figcaption>
+              </figure>
+              <figure class="testimonial-slide">
+                <svg class="testimonial-quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"
+                  aria-hidden="true">
+                  <path
+                    d="M9.5 6C6.5 6.8 4.5 9.4 4.5 12.8V18h5.5v-5.5H7.4c0-2 1.1-3.6 2.8-4.2L9.5 6zm9 0c-3 .8-5 3.4-5 6.8V18H19v-5.5h-2.6c0-2 1.1-3.6 2.8-4.2L18.5 6z" />
+                </svg>
+                <blockquote data-i18n="t2_quote">Mon mentor m'a aidé à structurer mes prix et à décrocher mes premiers
+                  contrats. Un accompagnement concret, du début à la fin.</blockquote>
+                <figcaption class="testimonial-author">
+                  <div class="testimonial-avatar">
+                    <span>KD</span>
+                    <img src="https://images.unsplash.com/photo-1602471615287-d733c59b79c4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fHww" alt="Karim Diallo">
+                  </div>
+                  <div class="testimonial-meta">
+                    <strong>Karim Diallo</strong>
+                    <span data-i18n="t2_role">Cofondateur — Diallo Solutions numériques</span>
+                  </div>
+                </figcaption>
+              </figure>
+              <figure class="testimonial-slide">
+                <svg class="testimonial-quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"
+                  aria-hidden="true">
+                  <path
+                    d="M9.5 6C6.5 6.8 4.5 9.4 4.5 12.8V18h5.5v-5.5H7.4c0-2 1.1-3.6 2.8-4.2L9.5 6zm9 0c-3 .8-5 3.4-5 6.8V18H19v-5.5h-2.6c0-2 1.1-3.6 2.8-4.2L18.5 6z" />
+                </svg>
+                <blockquote data-i18n="t3_quote">Les ateliers et la communauté m'ont permis de briser l'isolement. J'ai
+                  même trouvé des partenaires parmi les autres participants.</blockquote>
+                <figcaption class="testimonial-author">
+                  <div class="testimonial-avatar">
+                    <span>SL</span>
+                    <img src="https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D" alt="Sophie Lavoie">
+                  </div>
+                  <div class="testimonial-meta">
+                    <strong>Sophie Lavoie</strong>
+                    <span data-i18n="t3_role">Fondatrice — Atelier Lavoie Design</span>
+                  </div>
+                </figcaption>
+              </figure>
+              <figure class="testimonial-slide">
+                <svg class="testimonial-quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"
+                  aria-hidden="true">
+                  <path
+                    d="M9.5 6C6.5 6.8 4.5 9.4 4.5 12.8V18h5.5v-5.5H7.4c0-2 1.1-3.6 2.8-4.2L9.5 6zm9 0c-3 .8-5 3.4-5 6.8V18H19v-5.5h-2.6c0-2 1.1-3.6 2.8-4.2L18.5 6z" />
+                </svg>
+                <blockquote data-i18n="t4_quote">Nouvel arrivant, je ne connaissais pas le système canadien. L'I2ENF m'a
+                  guidé pour l'enregistrement, la TVH et le financement.</blockquote>
+                <figcaption class="testimonial-author">
+                  <div class="testimonial-avatar">
+                    <span>JT</span>
+                    <img src="https://images.unsplash.com/photo-1665495005618-6f55e5f77a07?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fHww" alt="Jean-Marc Desjardins">
+                  </div>
+                  <div class="testimonial-meta">
+                    <strong>Jean-Marc Desjardins</strong>
+                    <span data-i18n="t4_role">Propriétaire — Desjardins Logistique</span>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="testimonial-controls">
+            <button type="button" class="testimonial-arrow" data-dir="prev" data-i18n-aria-label="testimonials_prev"
+              aria-label="Témoignage précédent">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <div class="testimonial-dots"></div>
+            <button type="button" class="testimonial-arrow" data-dir="next" data-i18n-aria-label="testimonials_next"
+              aria-label="Témoignage suivant">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

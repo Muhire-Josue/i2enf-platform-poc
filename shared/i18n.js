@@ -46,9 +46,26 @@ const translations = {
     cohort_winter: "Cohorte — Hiver",
     cohort_spring: "Cohorte — Printemps",
     cohort_summer: "Cohorte — Été",
-    cohort_deadline: "Date limite : [DATE LIMITE]",
-    cohort_start: "Début du programme : [DATE DE DÉBUT]",
+    cohort_winter_deadline: "Date limite : 15\u00a0novembre\u00a02026, 23\u00a0h\u00a059",
+    cohort_winter_start: "Début du programme : 11\u00a0janvier\u00a02027, 9\u00a0h\u00a000",
+    cohort_spring_deadline: "Date limite : 14\u00a0février\u00a02027, 23\u00a0h\u00a059",
+    cohort_spring_start: "Début du programme : 5\u00a0avril\u00a02027, 9\u00a0h\u00a000",
+    cohort_summer_deadline: "Date limite : 16\u00a0mai\u00a02027, 23\u00a0h\u00a059",
+    cohort_summer_start: "Début du programme : 5\u00a0juillet\u00a02027, 9\u00a0h\u00a000",
     cohort_apply_link: "Faire une demande \u2192",
+    testimonials_kicker: "Témoignages",
+    testimonials_title: "Ils ont fait le saut",
+    testimonials_prev: "Témoignage précédent",
+    testimonials_next: "Témoignage suivant",
+    testimonials_goto: "Aller au témoignage",
+    t1_quote: "Le diagnostic m'a donné une feuille de route claire. En six mois, j'ai ouvert ma boulangerie et embauché deux employés.",
+    t1_role: "Fondatrice — Boulangerie La Mie Dorée",
+    t2_quote: "Mon mentor m'a aidé à structurer mes prix et à décrocher mes premiers contrats. Un accompagnement concret, du début à la fin.",
+    t2_role: "Cofondateur — Diallo Solutions numériques",
+    t3_quote: "Les ateliers et la communauté m'ont permis de briser l'isolement. J'ai même trouvé des partenaires parmi les autres participants.",
+    t3_role: "Fondatrice — Atelier Lavoie Design",
+    t4_quote: "Nouvel arrivant, je ne connaissais pas le système canadien. L'I2ENF m'a guidé pour l'enregistrement, la TVH et le financement.",
+    t4_role: "Propriétaire — Tshibangu Logistique",
     apply_kicker: "Candidature",
     apply_title: "Prêt à commencer?",
     apply_body: "Remplissez ce court formulaire — un membre de l'équipe communiquera avec vous.",
@@ -111,9 +128,26 @@ const translations = {
     cohort_winter: "Winter Cohort",
     cohort_spring: "Spring Cohort",
     cohort_summer: "Summer Cohort",
-    cohort_deadline: "Deadline: [DEADLINE DATE]",
-    cohort_start: "Program start: [START DATE]",
+    cohort_winter_deadline: "Deadline: November\u00a015,\u00a02026, 11:59\u00a0p.m.",
+    cohort_winter_start: "Program start: January\u00a011,\u00a02027, 9:00\u00a0a.m.",
+    cohort_spring_deadline: "Deadline: February\u00a014,\u00a02027, 11:59\u00a0p.m.",
+    cohort_spring_start: "Program start: April\u00a05,\u00a02027, 9:00\u00a0a.m.",
+    cohort_summer_deadline: "Deadline: May\u00a016,\u00a02027, 11:59\u00a0p.m.",
+    cohort_summer_start: "Program start: July\u00a05,\u00a02027, 9:00\u00a0a.m.",
     cohort_apply_link: "Apply now \u2192",
+    testimonials_kicker: "Testimonials",
+    testimonials_title: "They took the leap",
+    testimonials_prev: "Previous testimonial",
+    testimonials_next: "Next testimonial",
+    testimonials_goto: "Go to testimonial",
+    t1_quote: "The diagnostic gave me a clear roadmap. Within six months, I opened my bakery and hired two employees.",
+    t1_role: "Founder — Boulangerie La Mie Dorée",
+    t2_quote: "My mentor helped me structure my pricing and land my first contracts. Practical support from start to finish.",
+    t2_role: "Co-founder — Diallo Solutions numériques",
+    t3_quote: "The workshops and the community helped me break out of isolation. I even found partners among the other participants.",
+    t3_role: "Founder — Atelier Lavoie Design",
+    t4_quote: "As a newcomer, I didn't know the Canadian system. I2ENF guided me through registration, HST, and funding.",
+    t4_role: "Owner — Tshibangu Logistique",
     apply_kicker: "Application",
     apply_title: "Ready to get started?",
     apply_body: "Fill out this short form — a team member will reach out.",
@@ -162,6 +196,11 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
     const key = el.getAttribute('data-i18n-alt');
     if (dict[key]) el.setAttribute('alt', dict[key]);
+  });
+
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-aria-label');
+    if (dict[key]) el.setAttribute('aria-label', dict[key]);
   });
 
   document.querySelectorAll('.lang-toggle [data-lang]').forEach((btn) => {
