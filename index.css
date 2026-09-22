@@ -77,6 +77,12 @@
   color: var(--color-ivory);
   border: none;
   border-radius: var(--radius-md);
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: #9A5628;
+  color: var(--color-ivory);
 }
 
 .btn-outline {
@@ -86,6 +92,12 @@
   padding: 10px 18px;
   border: 1px solid var(--color-navy);
   border-radius: var(--radius-md);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-outline:hover {
+  background: var(--color-navy);
+  color: var(--color-ivory);
 }
 
 .btn-outline-light {
@@ -96,6 +108,12 @@
   border: 1px solid var(--color-ivory);
   border-radius: var(--radius-md);
   color: var(--color-ivory);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-outline-light:hover {
+  background: var(--color-ivory);
+  color: var(--color-navy);
 }
 
 .hero {
@@ -172,6 +190,16 @@
 
 .kicker-light {
   color: var(--color-gold);
+}
+
+.kicker-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kicker-icon {
+  flex-shrink: 0;
 }
 
 .values {
@@ -405,19 +433,35 @@
   border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cohort-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(31, 58, 95, 0.08);
+}
+
+.cohort-card-open {
+  border-top: 3px solid var(--color-terracotta);
 }
 
 .cohort-status {
-  font-size: 13px;
+  align-self: flex-start;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-muted);
 }
 
 .cohort-status.status-open {
-  color: var(--color-terracotta);
+  background: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+  color: var(--color-ivory);
 }
 
 .cohort-card h3 {
@@ -425,10 +469,32 @@
   font-weight: 600;
 }
 
-.cohort-card p {
+.cohort-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cohort-icon {
+  flex-shrink: 0;
+  color: var(--color-terracotta);
+}
+
+.cohort-detail span {
   font-size: 14px;
   color: var(--color-text-muted);
-  margin: 0;
+}
+
+.cohort-link {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-terracotta);
+  align-self: flex-start;
+}
+
+.cohort-link:hover {
+  color: #9A5628;
 }
 
 .apply {
