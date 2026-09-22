@@ -50,6 +50,8 @@ function initTestimonials() {
   slider.querySelectorAll('.testimonial-avatar img').forEach((img) => {
     const src = img.getAttribute('src') || '';
     if (!src.startsWith('http')) { img.remove(); return; }
+    // The image may have already failed before this script ran
+    if (img.complete && img.naturalWidth === 0) { img.remove(); return; }
     img.addEventListener('error', () => img.remove());
   });
 
