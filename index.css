@@ -192,7 +192,6 @@
 
 .value-card {
   position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -208,22 +207,12 @@
   box-shadow: 0 16px 32px rgba(31, 58, 95, 0.1);
 }
 
-.value-ghost-number {
-  position: absolute;
-  top: -8px;
-  right: 14px;
-  font-family: var(--font-display);
-  font-size: 96px;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--color-ivory-alt);
-  z-index: 0;
-  user-select: none;
+.value-icon-wrap {
+  position: relative;
+  width: 52px;
 }
 
 .value-icon {
-  position: relative;
-  z-index: 1;
   width: 52px;
   height: 52px;
   display: flex;
@@ -234,11 +223,22 @@
   color: var(--color-terracotta);
 }
 
-.value-card h3,
-.value-card p,
-.value-list {
-  position: relative;
-  z-index: 1;
+.value-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-terracotta);
+  color: var(--color-ivory);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
 }
 
 .value-card h3 {
@@ -284,12 +284,26 @@
 }
 
 .eligibility {
+  position: relative;
+  overflow: hidden;
   padding: 96px 0;
   background: var(--color-navy);
   color: var(--color-ivory);
 }
 
+.eligibility-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(250, 247, 242, 0.08) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(120deg, black, transparent 70%);
+  mask-image: linear-gradient(120deg, black, transparent 70%);
+  pointer-events: none;
+}
+
 .eligibility-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 72px;
 }
@@ -313,23 +327,43 @@
   color: var(--color-text-onNavy);
 }
 
+.eligibility-cta {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
 .eligibility-grid {
   flex-grow: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  gap: 20px;
   align-content: start;
 }
 
 .eligibility-item {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   align-items: flex-start;
+  padding: 22px;
+  background: rgba(250, 247, 242, 0.05);
+  border: 1px solid rgba(250, 247, 242, 0.14);
+  border-radius: var(--radius-md);
+}
+
+.eligibility-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(217, 165, 116, 0.18);
+  border-radius: 50%;
   color: var(--color-gold);
 }
 
 .eligibility-item p {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.5;
   color: var(--color-ivory);
   margin: 0;

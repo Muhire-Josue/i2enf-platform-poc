@@ -65,12 +65,14 @@
         </div>
         <div class="values-grid">
           <div class="value-card">
-            <span class="value-ghost-number" aria-hidden="true">01</span>
-            <div class="value-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M9 11l3 3L22 4" />
-                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
-              </svg>
+            <div class="value-icon-wrap">
+              <div class="value-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                </svg>
+              </div>
+              <span class="value-badge">01</span>
             </div>
             <h3 data-i18n="value_diagnostic_title">Diagnostic personnalisé</h3>
             <p data-i18n="value_diagnostic_body">Un point de départ clair, adapté à votre réalité.</p>
@@ -81,12 +83,14 @@
             </ul>
           </div>
           <div class="value-card">
-            <span class="value-ghost-number" aria-hidden="true">02</span>
-            <div class="value-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M4 21v-1a8 8 0 0116 0v1" />
-              </svg>
+            <div class="value-icon-wrap">
+              <div class="value-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 21v-1a8 8 0 0116 0v1" />
+                </svg>
+              </div>
+              <span class="value-badge">02</span>
             </div>
             <h3 data-i18n="value_mentorship_title">Mentorat</h3>
             <p data-i18n="value_mentorship_body">Un accompagnement humain, tout au long du parcours.</p>
@@ -97,14 +101,16 @@
             </ul>
           </div>
           <div class="value-card">
-            <span class="value-ghost-number" aria-hidden="true">03</span>
-            <div class="value-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M17 20h5v-2a4 4 0 00-3-3.87" />
-                <path d="M9 20H4v-2a4 4 0 013-3.87" />
-                <circle cx="12" cy="7" r="4" />
-                <path d="M12 14a4 4 0 014 4v2H8v-2a4 4 0 014-4z" />
-              </svg>
+            <div class="value-icon-wrap">
+              <div class="value-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 00-3-3.87" />
+                  <path d="M16 3.13a4 4 0 010 7.75" />
+                </svg>
+              </div>
+              <span class="value-badge">03</span>
             </div>
             <h3 data-i18n="value_community_title">Communauté &amp; formations</h3>
             <p data-i18n="value_community_body">Apprendre et avancer, entouré de pairs.</p>
@@ -119,40 +125,46 @@
     </section>
 
     <section id="criteres" class="eligibility">
+      <div class="eligibility-pattern" aria-hidden="true"></div>
       <div class="container eligibility-inner">
         <div class="eligibility-intro">
           <span class="kicker kicker-light" data-i18n="eligibility_kicker">Admissibilité</span>
           <h2 data-i18n="eligibility_title">Est-ce que l'I2ENF est pour vous?</h2>
           <p data-i18n="eligibility_body">Si vous répondez oui à ces critères, votre candidature sera considérée pour la
             prochaine cohorte.</p>
+          <a href="#candidature" class="btn-primary eligibility-cta" data-i18n="eligibility_cta">Faire une demande</a>
         </div>
         <div class="eligibility-grid">
           <div class="eligibility-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 12l3 3 5-6" />
-            </svg>
+            <span class="eligibility-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
             <p data-i18n="eligibility_1">Résider dans la région desservie par SOFIFRAN</p>
           </div>
           <div class="eligibility-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 12l3 3 5-6" />
-            </svg>
+            <span class="eligibility-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
             <p data-i18n="eligibility_2">Avoir une idée d'affaires ou une entreprise en démarrage</p>
           </div>
           <div class="eligibility-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 12l3 3 5-6" />
-            </svg>
+            <span class="eligibility-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
             <p data-i18n="eligibility_3">Pouvoir communiquer en français</p>
           </div>
           <div class="eligibility-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 12l3 3 5-6" />
-            </svg>
+            <span class="eligibility-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
             <p data-i18n="eligibility_4">S'engager à participer activement au programme</p>
           </div>
         </div>
