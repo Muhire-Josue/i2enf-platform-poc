@@ -13,7 +13,9 @@ const translations = {
     hero_body: "Diagnostic personnalisé, mentorat, formations et une communauté d'entrepreneurs francophones — un accompagnement complet pour transformer une idée en entreprise.",
     hero_cta_primary: "Faire une demande",
     hero_cta_secondary: "Voir les critères",
-    hero_photo_placeholder: "[PHOTO D'ÉQUIPE I2ENF]",
+    hero_photo_alt: "Entrepreneurs collaborant lors d'une séance de travail",
+    values_kicker: "Notre approche",
+    values_title: "Un accompagnement en trois temps",
     value_diagnostic_title: "Diagnostic personnalisé",
     value_diagnostic_body: "Un plan de parcours adapté à votre stade de développement, réévalué à mi-parcours et à la sortie.",
     value_mentorship_title: "Mentorat",
@@ -65,7 +67,9 @@ const translations = {
     hero_body: "Personalized diagnostic, mentorship, training, and a community of francophone entrepreneurs — full support to turn an idea into a business.",
     hero_cta_primary: "Apply now",
     hero_cta_secondary: "See eligibility",
-    hero_photo_placeholder: "[I2ENF TEAM PHOTO]",
+    hero_photo_alt: "Entrepreneurs collaborating during a work session",
+    values_kicker: "Our approach",
+    values_title: "Support built in three parts",
     value_diagnostic_title: "Personalized diagnostic",
     value_diagnostic_body: "A journey plan tailored to your stage, reassessed mid-way and at exit.",
     value_mentorship_title: "Mentorship",
@@ -131,6 +135,11 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
     const key = el.getAttribute('data-i18n-placeholder');
     if (dict[key]) el.setAttribute('placeholder', dict[key]);
+  });
+
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-alt');
+    if (dict[key]) el.setAttribute('alt', dict[key]);
   });
 
   document.querySelectorAll('.lang-toggle [data-lang]').forEach((btn) => {
