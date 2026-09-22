@@ -1,0 +1,46 @@
+/* shared/style.css — design tokens & base styles, shared across every page */
+
+:root {
+  --color-navy: #1F3A5F;
+  --color-navy-light: #3E4C5E;
+  --color-ivory: #FAF7F2;
+  --color-ivory-alt: #F1ECE2;
+  --color-terracotta: #B5652F;
+  --color-gold: #D9A574;
+  --color-border: #E4DDD1;
+  --color-border-strong: #C9BFAE;
+  --color-text-muted: #55627A;
+  --color-text-onNavy: #C7D0DC;
+  --color-text-onNavy-muted: #9FADC2;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
+
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --max-width: 1200px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-ivory);
+  color: var(--color-navy);
+  line-height: 1.5;
+}
+
+h1, h2, h3 { font-family: var(--font-display); margin: 0; }
+
+a { color: var(--color-navy); text-decoration: none; }
+a:hover { color: var(--color-terracotta); }
+
+button { font-family: var(--font-body); cursor: pointer; }
+input, textarea, select { font-family: var(--font-body); }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 64px; }
+
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+}
