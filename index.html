@@ -1,15 +1,19 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>I2ENF — Incubateur intégré pour l'entrepreneuriat francophone</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="shared/style.css">
   <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
 
   <header class="site-header">
@@ -33,23 +37,21 @@
 
   <main>
     <section class="hero">
+      <div class="hero-bg">
+        <img class="hero-bg-image"
+          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          data-i18n-alt="hero_photo_alt" alt="Entrepreneurs collaborant lors d'une séance de travail">
+        <div class="hero-scrim" aria-hidden="true"></div>
+      </div>
       <div class="container hero-inner">
         <div class="hero-text">
           <span class="kicker" data-i18n="hero_kicker">Incubateur intégré</span>
           <h1 data-i18n="hero_title">L'entrepreneuriat francophone, accompagné du début à la croissance</h1>
-          <p data-i18n="hero_body">Diagnostic personnalisé, mentorat, formations et une communauté d'entrepreneurs francophones — un accompagnement complet pour transformer une idée en entreprise.</p>
+          <p data-i18n="hero_body">Diagnostic personnalisé, mentorat, formations et une communauté d'entrepreneurs
+            francophones — un accompagnement complet pour transformer une idée en entreprise.</p>
           <div class="hero-actions">
             <a href="#candidature" class="btn-primary" data-i18n="hero_cta_primary">Faire une demande</a>
-            <a href="#criteres" class="btn-outline" data-i18n="hero_cta_secondary">Voir les critères</a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <!-- Placeholder: swap for a real I2ENF team photo. A stock photo was
-               provided during design review but wasn't used here since it showed
-               another company's visible branding (a Y Combinator-style logo and
-               "PROOF" signage) — not appropriate inside an I2ENF-branded page. -->
-          <div class="hero-photo-placeholder">
-            <span data-i18n="hero_photo_placeholder">[PHOTO D'ÉQUIPE I2ENF]</span>
+            <a href="#criteres" class="btn-outline-light" data-i18n="hero_cta_secondary">Voir les critères</a>
           </div>
         </div>
       </div>
@@ -58,19 +60,33 @@
     <section class="values">
       <div class="container values-grid">
         <div class="value-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M9 11l3 3L22 4" />
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+          </svg>
           <h3 data-i18n="value_diagnostic_title">Diagnostic personnalisé</h3>
-          <p data-i18n="value_diagnostic_body">Un plan de parcours adapté à votre stade de développement, réévalué à mi-parcours et à la sortie.</p>
+          <p data-i18n="value_diagnostic_body">Un plan de parcours adapté à votre stade de développement, réévalué à
+            mi-parcours et à la sortie.</p>
         </div>
         <div class="value-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 21v-1a8 8 0 0116 0v1" />
+          </svg>
           <h3 data-i18n="value_mentorship_title">Mentorat</h3>
-          <p data-i18n="value_mentorship_body">Jumelage avec des mentors d'expérience et des séances de suivi réservées directement en ligne.</p>
+          <p data-i18n="value_mentorship_body">Jumelage avec des mentors d'expérience et des séances de suivi réservées
+            directement en ligne.</p>
         </div>
         <div class="value-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 20h5v-2a4 4 0 00-3-3.87"/><path d="M9 20H4v-2a4 4 0 013-3.87"/><circle cx="12" cy="7" r="4"/><path d="M12 14a4 4 0 014 4v2H8v-2a4 4 0 014-4z"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M17 20h5v-2a4 4 0 00-3-3.87" />
+            <path d="M9 20H4v-2a4 4 0 013-3.87" />
+            <circle cx="12" cy="7" r="4" />
+            <path d="M12 14a4 4 0 014 4v2H8v-2a4 4 0 014-4z" />
+          </svg>
           <h3 data-i18n="value_community_title">Communauté &amp; formations</h3>
-          <p data-i18n="value_community_body">Ateliers, modules en ligne et un réseau de pairs francophones pour avancer ensemble.</p>
+          <p data-i18n="value_community_body">Ateliers, modules en ligne et un réseau de pairs francophones pour avancer
+            ensemble.</p>
         </div>
       </div>
     </section>
@@ -80,23 +96,36 @@
         <div class="eligibility-intro">
           <span class="kicker kicker-light" data-i18n="eligibility_kicker">Admissibilité</span>
           <h2 data-i18n="eligibility_title">Est-ce que l'I2ENF est pour vous?</h2>
-          <p data-i18n="eligibility_body">Si vous répondez oui à ces critères, votre candidature sera considérée pour la prochaine cohorte.</p>
+          <p data-i18n="eligibility_body">Si vous répondez oui à ces critères, votre candidature sera considérée pour la
+            prochaine cohorte.</p>
         </div>
         <div class="eligibility-grid">
           <div class="eligibility-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 12l3 3 5-6" />
+            </svg>
             <p data-i18n="eligibility_1">Résider dans la région desservie par SOFIFRAN</p>
           </div>
           <div class="eligibility-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 12l3 3 5-6" />
+            </svg>
             <p data-i18n="eligibility_2">Avoir une idée d'affaires ou une entreprise en démarrage</p>
           </div>
           <div class="eligibility-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 12l3 3 5-6" />
+            </svg>
             <p data-i18n="eligibility_3">Pouvoir communiquer en français</p>
           </div>
           <div class="eligibility-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 12l3 3 5-6" />
+            </svg>
             <p data-i18n="eligibility_4">S'engager à participer activement au programme</p>
           </div>
         </div>
@@ -143,7 +172,8 @@
         <form id="apply-form" class="apply-form">
           <div class="form-field">
             <label for="nom" data-i18n="apply_name">Nom complet</label>
-            <input id="nom" name="nom" type="text" required data-i18n-placeholder="apply_name_placeholder" placeholder="Votre nom">
+            <input id="nom" name="nom" type="text" required data-i18n-placeholder="apply_name_placeholder"
+              placeholder="Votre nom">
           </div>
           <div class="form-field">
             <label for="courriel" data-i18n="apply_email">Courriel</label>
@@ -160,15 +190,20 @@
           </div>
           <div class="form-field">
             <label for="description" data-i18n="apply_description">Décrivez votre projet</label>
-            <textarea id="description" name="description" rows="4" data-i18n-placeholder="apply_description_placeholder" placeholder="Quelques phrases suffisent"></textarea>
+            <textarea id="description" name="description" rows="4" data-i18n-placeholder="apply_description_placeholder"
+              placeholder="Quelques phrases suffisent"></textarea>
           </div>
           <button type="submit" class="btn-primary" data-i18n="apply_submit">Soumettre ma demande</button>
         </form>
 
         <div id="apply-success" class="apply-success" hidden>
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M8 12l3 3 5-6" />
+          </svg>
           <h3 data-i18n="apply_success_title">Demande envoyée</h3>
-          <p data-i18n="apply_success_body">Merci! Votre candidature a été reçue et sera examinée par l'équipe SOFIFRAN.</p>
+          <p data-i18n="apply_success_body">Merci! Votre candidature a été reçue et sera examinée par l'équipe SOFIFRAN.
+          </p>
         </div>
       </div>
     </section>
@@ -188,4 +223,5 @@
   <script src="shared/mock-data.js"></script>
   <script src="index.js"></script>
 </body>
+
 </html>
