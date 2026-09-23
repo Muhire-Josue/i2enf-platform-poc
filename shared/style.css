@@ -21,9 +21,10 @@
   --max-width: 1200px;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+
+/* Elements with the hidden attribute stay hidden, even if a class sets display */
+[hidden] { display: none !important; }
 
 body {
   margin: 0;
@@ -33,41 +34,16 @@ body {
   line-height: 1.5;
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-  margin: 0;
-}
+h1, h2, h3 { font-family: var(--font-display); margin: 0; }
 
-a {
-  color: var(--color-navy);
-  text-decoration: none;
-}
+a { color: var(--color-navy); text-decoration: none; }
+a:hover { color: var(--color-terracotta); }
 
-a:hover {
-  color: var(--color-terracotta);
-}
+button { font-family: var(--font-body); cursor: pointer; }
+input, textarea, select { font-family: var(--font-body); }
 
-button {
-  font-family: var(--font-body);
-  cursor: pointer;
-}
-
-input,
-textarea,
-select {
-  font-family: var(--font-body);
-}
-
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 64px;
-}
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 64px; }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 24px;
-  }
+  .container { padding: 0 24px; }
 }
