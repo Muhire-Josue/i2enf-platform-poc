@@ -1,4 +1,5 @@
 // login.js — login page behavior
+// DEMO MODE: any email and password logs in (see demoLogin in shared/mock-data.js).
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('login-form');
@@ -18,32 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
     clearAlerts();
     clearInvalid(form);
 
-    const errors = [];
+    // Only check that both fields are filled in
     if (!email.value.trim() || !password.value) {
-      errors.push('err_login_required');
       markInvalid(email, !email.value.trim());
       markInvalid(password, !password.value);
-    } else if (!EMAIL_PATTERN.test(email.value.trim())) {
-      errors.push('err_email');
-      markInvalid(email, true);
-    }
-    if (errors.length) {
-      showAlert('danger', 'err_title', errors);
+      showAlert('danger', 'err_title', ['err_login_required']);
       return;
     }
 
-    const user = findUserByEmail(email.value);
-    if (!user || user.password !== password.value) {
-      // Same message whether the email or the password is wrong, so the form
-      // doesn't reveal which emails have accounts
-      markInvalid(email, true);
-      markInvalid(password, true);
-      showAlert('danger', 'err_login_title', ['err_login_invalid']);
-      return;
-    }
-
+    const user = demoLogin(email.value);
     setSession(user, form.remember.checked);
     showAlert('success', 'login_success_title', [`login_success_${user.role}`]);
-    password.value = '';
+    form.querySelector('.auth-submit').disabled = true;
+
+    // Short pause so the confirmation is visible, then open the user's home page
+    setTimeout(() => {
+      window.location.href = ROLE_HOME[user.role] || ROLE_HOME.entrepreneur;
+    }, 900);
   });
 });

@@ -58,3 +58,37 @@ function setSession(user, remember) {
   // "Remember me" keeps the session after the browser closes
   (remember ? localStorage : sessionStorage).setItem('i2enf_session', session);
 }
+
+// ---- Demo login ----
+// For the presentation, any email and password logs in. Known accounts (demo
+// or registered) open their own area; any other email opens the entrepreneur
+// area. Real sign-in is handled by Microsoft Entra External ID.
+
+// Home page for each type of account
+const ROLE_HOME = {
+  entrepreneur: 'dashboard.html',
+  mentor: 'mentor-dashboard.html',
+  staff: 'applications.html',
+};
+
+function demoLogin(email) {
+  const known = findUserByEmail(email);
+  if (known) return known;
+  // Unknown email: sign in as an entrepreneur, using the email to make a first name
+  const first = email.trim().split('@')[0].split(/[._\-0-9]+/).filter(Boolean)[0] || 'Entrepreneur';
+  return {
+    role: 'entrepreneur',
+    prenom: first.charAt(0).toUpperCase() + first.slice(1).toLowerCase(),
+    email: email.trim().toLowerCase(),
+  };
+}
+
+function getSession() {
+  const raw = sessionStorage.getItem('i2enf_session') || localStorage.getItem('i2enf_session');
+  return raw ? JSON.parse(raw) : null;
+}
+
+function clearSession() {
+  sessionStorage.removeItem('i2enf_session');
+  localStorage.removeItem('i2enf_session');
+}
