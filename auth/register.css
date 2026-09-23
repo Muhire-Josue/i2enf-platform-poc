@@ -1,0 +1,89 @@
+/* register.css — registration-page specifics (shared layout lives in shared/auth.css) */
+
+.register-card { max-width: 680px; }
+
+/* Numbered form sections */
+.register-section { display: flex; flex-direction: column; gap: 18px; }
+.register-section + .register-section { padding-top: 26px; border-top: 1px solid var(--color-border); }
+.register-section-title {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 21px; font-weight: 600; line-height: 1.3; color: var(--color-navy);
+}
+.section-num {
+  width: 30px; height: 30px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--color-terracotta); color: var(--color-ivory);
+  font-size: 15px;
+}
+.field-label { font-size: 15px; font-weight: 600; color: var(--color-navy); }
+
+/* Account-type picker: radio buttons styled as cards */
+.role-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.role-option { position: relative; cursor: pointer; }
+.role-option input { position: absolute; opacity: 0; pointer-events: none; }
+.role-card {
+  height: 100%;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 18px;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.role-card strong { font-size: 16px; color: var(--color-navy); }
+.role-card > span:last-child { font-size: 14px; line-height: 1.45; color: var(--color-text-muted); }
+.role-icon {
+  width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  background: var(--color-ivory-alt);
+  color: var(--color-terracotta);
+}
+.role-option:hover .role-card { border-color: var(--color-terracotta); }
+.role-option input:checked + .role-card {
+  border-color: var(--color-terracotta);
+  background: rgba(181, 101, 47, 0.06);
+  box-shadow: 0 0 0 3px rgba(181, 101, 47, 0.15);
+}
+.role-option input:checked + .role-card .role-icon { background: var(--color-terracotta); color: var(--color-ivory); }
+.role-option input:focus-visible + .role-card { outline: 2px solid var(--color-navy); outline-offset: 2px; }
+
+/* Rows of radio buttons / checkboxes */
+.choice-row { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+
+/* Expertise chips */
+.chip-group { display: flex; flex-wrap: wrap; gap: 10px; border-radius: var(--radius-md); }
+.chip-group.field-invalid { outline: 2px solid #B42318; outline-offset: 4px; }
+.chip { position: relative; cursor: pointer; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  font-size: 14px; color: var(--color-navy-light);
+  background: #FFFFFF;
+  transition: all 0.15s ease;
+}
+.chip:hover span { border-color: var(--color-terracotta); }
+.chip input:checked + span { background: var(--color-terracotta); border-color: var(--color-terracotta); color: var(--color-ivory); }
+.chip input:focus-visible + span { outline: 2px solid var(--color-navy); outline-offset: 2px; }
+.choice-row.field-invalid { outline: 2px solid #B42318; outline-offset: 6px; border-radius: 4px; }
+
+/* Optional demographics block */
+.demographics {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 18px;
+  background: var(--color-ivory-alt);
+  border-radius: var(--radius-md);
+}
+.demographics-fields { display: flex; flex-direction: column; gap: 16px; }
+
+.check-field.field-invalid-label { color: #B42318; }
+
+@media (max-width: 900px) {
+  .role-options { grid-template-columns: 1fr; }
+  .role-card { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: 14px; }
+  .role-card > span:last-child { flex-basis: 100%; }
+}

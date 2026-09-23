@@ -1,0 +1,18 @@
+/* login.css — login-page specifics (shared layout lives in shared/auth.css) */
+
+.login-options { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.login-forgot { font-size: 15px; font-weight: 600; color: var(--color-terracotta); }
+.login-forgot:hover { color: #9A5628; }
+
+/* Demo accounts box, for reviewers of the proof of concept */
+.login-demo {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 16px 18px;
+  background: var(--color-ivory-alt);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  font-size: 14px; color: var(--color-navy-light);
+}
+.login-demo strong { font-size: 14px; color: var(--color-navy); }
+.login-demo ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.login-demo code { font-size: 13px; color: var(--color-terracotta); background: #FFFFFF; padding: 1px 6px; border-radius: 4px; }

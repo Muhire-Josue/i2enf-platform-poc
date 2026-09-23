@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connexion — I2ENF</title>
+  <!-- Bootstrap first, so the site's own styles take priority where they overlap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/style.css">
+  <link rel="stylesheet" href="../shared/auth.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body class="auth-page">
+
+  <header class="auth-header">
+    <div class="container auth-header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-main">I2ENF</span>
+        <span class="logo-sub">SOFIFRAN</span>
+      </a>
+      <div class="auth-header-actions">
+        <a href="index.html" class="auth-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          <span data-i18n="auth_back_home">Retour à l'accueil</span>
+        </a>
+        <div class="lang-toggle">
+          <button data-lang="fr" type="button" class="active">FR</button>
+          <button data-lang="en" type="button">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-main">
+    <aside class="auth-aside">
+      <div class="auth-aside-pattern" aria-hidden="true"></div>
+      <div class="auth-aside-inner">
+        <span class="kicker kicker-light" data-i18n="login_kicker">Espace membres</span>
+        <h1 data-i18n="login_aside_title">Bon retour parmi nous</h1>
+        <p data-i18n="login_aside_body">Retrouvez votre parcours, vos séances de mentorat et vos documents au même endroit.</p>
+        <ul class="auth-benefits">
+          <li>
+            <span class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-i18n="login_benefit1">Suivez votre plan de parcours et vos jalons</span>
+          </li>
+          <li>
+            <span class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-i18n="login_benefit2">Réservez vos séances de mentorat</span>
+          </li>
+          <li>
+            <span class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-i18n="login_benefit3">Accédez à votre dossier d'entreprise en toute sécurité</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-card-head">
+          <h2 data-i18n="login_title">Se connecter</h2>
+          <p data-i18n="login_subtitle">Accédez à votre espace I2ENF.</p>
+        </div>
+
+        <div id="auth-alerts" aria-live="polite"></div>
+
+        <form id="login-form" class="auth-form" novalidate>
+          <div class="form-field">
+            <label for="login-email" data-i18n="auth_email">Courriel</label>
+            <input id="login-email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.com">
+          </div>
+          <div class="form-field">
+            <label for="login-password" data-i18n="auth_password">Mot de passe</label>
+            <div class="password-wrap">
+              <input id="login-password" name="password" type="password" autocomplete="current-password">
+              <button type="button" class="password-toggle" data-target="login-password" data-i18n-aria-label="auth_show_password" aria-label="Afficher le mot de passe">
+                <svg class="icon-show" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="icon-hide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.8 10.8 0 0112 5c6.5 0 10 7 10 7a17.6 17.6 0 01-3.2 4.2M6.6 6.6C3.8 8.4 2 12 2 12s3.5 7 10 7c1.7 0 3.2-.5 4.5-1.2"/><path d="M9.9 9.9a3 3 0 004.2 4.2"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="login-options">
+            <label class="check-field">
+              <input type="checkbox" name="remember">
+              <span data-i18n="login_remember">Se souvenir de moi</span>
+            </label>
+            <a href="#" class="login-forgot" data-i18n="login_forgot">Mot de passe oublié?</a>
+          </div>
+
+          <button type="submit" class="btn-primary auth-submit" data-i18n="login_submit">Se connecter</button>
+
+          <p class="auth-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/></svg>
+            <span data-i18n="login_mfa_note">Pour protéger votre compte, une vérification en deux étapes pourra vous être demandée.</span>
+          </p>
+        </form>
+
+        <p class="auth-switch">
+          <span data-i18n="login_no_account">Pas encore de compte?</span>
+          <a href="register.html" data-i18n="login_create_account">Créer un compte</a>
+        </p>
+
+        <div class="login-demo">
+          <strong data-i18n="login_demo_title">Comptes de démonstration</strong>
+          <ul>
+            <li><code>entrepreneur@demo.ca</code></li>
+            <li><code>mentor@demo.ca</code></li>
+            <li><code>conseiller@demo.ca</code></li>
+          </ul>
+          <span><span data-i18n="login_demo_password">Mot de passe :</span> <code>Demo2026!</code></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="shared/i18n.js"></script>
+  <script src="shared/mock-data.js"></script>
+  <script src="shared/alerts.js"></script>
+  <script src="shared/auth.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

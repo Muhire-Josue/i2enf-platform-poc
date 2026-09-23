@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Créer un compte — I2ENF</title>
+  <!-- Bootstrap first, so the site's own styles take priority where they overlap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/style.css">
+  <link rel="stylesheet" href="shared/auth.css">
+  <link rel="stylesheet" href="register.css">
+</head>
+<body class="auth-page">
+
+  <header class="auth-header">
+    <div class="container auth-header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-main">I2ENF</span>
+        <span class="logo-sub">SOFIFRAN</span>
+      </a>
+      <div class="auth-header-actions">
+        <a href="index.html" class="auth-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          <span data-i18n="auth_back_home">Retour à l'accueil</span>
+        </a>
+        <div class="lang-toggle">
+          <button data-lang="fr" type="button" class="active">FR</button>
+          <button data-lang="en" type="button">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-main">
+    <aside class="auth-aside">
+      <div class="auth-aside-pattern" aria-hidden="true"></div>
+      <div class="auth-aside-inner">
+        <span class="kicker kicker-light" data-i18n="register_kicker">Nouveau compte</span>
+        <h1 data-i18n="register_aside_title">Rejoignez la communauté I2ENF</h1>
+        <p data-i18n="register_aside_body">Un seul compte pour suivre votre parcours, échanger avec votre mentor et accéder aux ressources du programme.</p>
+        <ul class="auth-benefits">
+          <li>
+            <span class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-i18n="register_benefit1">Inscription en quelques minutes</span>
+          </li>
+          <li>
+            <span class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-i18n="register_benefit2">Données hébergées au Canada</span>
+          </li>
+          <li>
+            <span class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-i18n="register_benefit3">Plateforme en français d'abord, offerte en anglais</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="auth-panel">
+      <div class="auth-card register-card">
+        <div class="auth-card-head">
+          <h2 data-i18n="register_title">Créer un compte</h2>
+          <p data-i18n="register_subtitle">Les champs marqués d'un astérisque (*) sont obligatoires.</p>
+        </div>
+
+        <div id="auth-alerts" aria-live="polite"></div>
+
+        <form id="register-form" class="auth-form" novalidate>
+
+          <!-- 1. Account type -->
+          <div class="register-section" role="group" aria-labelledby="sec-role">
+            <h3 class="register-section-title" id="sec-role"><span class="section-num">1</span><span data-i18n="register_step_role">Type de compte</span></h3>
+            <div class="role-options" role="radiogroup" aria-labelledby="sec-role">
+              <label class="role-option">
+                <input type="radio" name="role" value="entrepreneur" checked>
+                <span class="role-card">
+                  <span class="role-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
+                  <strong data-i18n="role_entrepreneur">Entrepreneur</strong>
+                  <span data-i18n="role_entrepreneur_desc">Je veux lancer ou faire croître mon entreprise.</span>
+                </span>
+              </label>
+              <label class="role-option">
+                <input type="radio" name="role" value="mentor">
+                <span class="role-card">
+                  <span class="role-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg></span>
+                  <strong data-i18n="role_mentor">Mentor</strong>
+                  <span data-i18n="role_mentor_desc">Je souhaite accompagner des entrepreneurs.</span>
+                </span>
+              </label>
+              <label class="role-option">
+                <input type="radio" name="role" value="staff">
+                <span class="role-card">
+                  <span class="role-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></span>
+                  <strong data-i18n="role_staff">Personnel</strong>
+                  <span data-i18n="role_staff_desc">Équipe SOFIFRAN — code d'invitation requis.</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 2. Personal information (all account types) -->
+          <div class="register-section" role="group" aria-labelledby="sec-info">
+            <h3 class="register-section-title" id="sec-info"><span class="section-num">2</span><span data-i18n="register_step_info">Vos renseignements</span></h3>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="prenom"><span data-i18n="field_firstname">Prénom</span> *</label>
+                <input id="prenom" name="prenom" type="text" autocomplete="given-name">
+              </div>
+              <div class="form-field">
+                <label for="nom"><span data-i18n="field_lastname">Nom</span> *</label>
+                <input id="nom" name="nom" type="text" autocomplete="family-name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email"><span data-i18n="auth_email">Courriel</span> *</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.com">
+              </div>
+              <div class="form-field">
+                <label for="telephone"><span data-i18n="field_phone">Téléphone mobile</span> *</label>
+                <input id="telephone" name="telephone" type="tel" autocomplete="tel" placeholder="613-555-0123">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="langue"><span data-i18n="field_language">Langue de préférence</span> *</label>
+              <select id="langue" name="langue">
+                <option value="fr" data-i18n="lang_fr">Français</option>
+                <option value="en" data-i18n="lang_en">Anglais</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="password"><span data-i18n="auth_password">Mot de passe</span> *</label>
+                <div class="password-wrap">
+                  <input id="password" name="password" type="password" autocomplete="new-password">
+                  <button type="button" class="password-toggle" data-target="password" data-i18n-aria-label="auth_show_password" aria-label="Afficher le mot de passe">
+                    <svg class="icon-show" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="icon-hide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.8 10.8 0 0112 5c6.5 0 10 7 10 7a17.6 17.6 0 01-3.2 4.2M6.6 6.6C3.8 8.4 2 12 2 12s3.5 7 10 7c1.7 0 3.2-.5 4.5-1.2"/><path d="M9.9 9.9a3 3 0 004.2 4.2"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="password-confirm"><span data-i18n="field_password_confirm">Confirmer le mot de passe</span> *</label>
+                <input id="password-confirm" name="passwordConfirm" type="password" autocomplete="new-password">
+              </div>
+            </div>
+            <p class="form-hint" data-i18n="password_hint">Au moins 8 caractères, dont une lettre et un chiffre.</p>
+          </div>
+
+          <!-- 3a. Entrepreneur profile -->
+          <div class="register-section role-fields" data-role="entrepreneur" role="group" aria-labelledby="sec-project">
+            <h3 class="register-section-title" id="sec-project"><span class="section-num">3</span><span data-i18n="register_step_project">Votre projet</span></h3>
+            <div class="form-field">
+              <label for="entreprise" data-i18n="field_business_name">Nom de l'entreprise ou du projet (facultatif)</label>
+              <input id="entreprise" name="entreprise" type="text">
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="secteur"><span data-i18n="field_sector">Secteur d'activité</span> *</label>
+                <select id="secteur" name="secteur">
+                  <option value="" data-i18n="select_placeholder">Sélectionnez…</option>
+                  <option value="commerce" data-i18n="sector_retail">Commerce de détail</option>
+                  <option value="services" data-i18n="sector_services">Services professionnels</option>
+                  <option value="alimentation" data-i18n="sector_food">Alimentation et restauration</option>
+                  <option value="technologie" data-i18n="sector_tech">Technologies</option>
+                  <option value="construction" data-i18n="sector_construction">Construction et métiers</option>
+                  <option value="arts" data-i18n="sector_arts">Arts et culture</option>
+                  <option value="sante" data-i18n="sector_health">Santé et bien-être</option>
+                  <option value="autre" data-i18n="sector_other">Autre</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="stade"><span data-i18n="field_stage">Stade du projet</span> *</label>
+                <select id="stade" name="stade">
+                  <option value="" data-i18n="select_placeholder">Sélectionnez…</option>
+                  <option value="ideation" data-i18n="stage_ideation">Idéation</option>
+                  <option value="validation" data-i18n="stage_validation">Validation</option>
+                  <option value="demarrage" data-i18n="stage_startup">Démarrage</option>
+                  <option value="croissance" data-i18n="stage_growth">Croissance</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="statut"><span data-i18n="field_status">Statut de l'entreprise</span> *</label>
+                <select id="statut" name="statut">
+                  <option value="" data-i18n="select_placeholder">Sélectionnez…</option>
+                  <option value="non-enregistree" data-i18n="status_unregistered">Pas encore enregistrée</option>
+                  <option value="individuelle" data-i18n="status_sole">Entreprise individuelle enregistrée</option>
+                  <option value="incorporee" data-i18n="status_incorporated">Société incorporée</option>
+                  <option value="obnl" data-i18n="status_nonprofit">Organisme sans but lucratif</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="ville"><span data-i18n="field_city">Ville ou municipalité</span> *</label>
+                <input id="ville" name="ville" type="text" autocomplete="address-level2">
+              </div>
+            </div>
+            <div class="form-field">
+              <span class="field-label"><span data-i18n="field_reminders">Recevoir les rappels par</span> *</span>
+              <div class="choice-row">
+                <label class="check-field"><input type="radio" name="rappels" value="courriel" checked><span data-i18n="reminder_email">Courriel</span></label>
+                <label class="check-field"><input type="radio" name="rappels" value="texto"><span data-i18n="reminder_sms">Message texte</span></label>
+                <label class="check-field"><input type="radio" name="rappels" value="les-deux"><span data-i18n="reminder_both">Les deux</span></label>
+              </div>
+            </div>
+
+            <div class="demographics">
+              <label class="check-field">
+                <input type="checkbox" id="demo-consent" name="demoConsent">
+                <span data-i18n="demo_consent">Je souhaite fournir des renseignements démographiques (facultatif).</span>
+              </label>
+              <div class="demographics-fields" id="demographics-fields" hidden>
+                <p class="form-hint" data-i18n="demo_hint">Ces renseignements servent uniquement aux rapports agrégés destinés au bailleur de fonds. Vous pouvez retirer votre consentement en tout temps.</p>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="genre" data-i18n="field_gender">Identité de genre</label>
+                    <select id="genre" name="genre">
+                      <option value="" data-i18n="select_placeholder">Sélectionnez…</option>
+                      <option value="femme" data-i18n="gender_woman">Femme</option>
+                      <option value="homme" data-i18n="gender_man">Homme</option>
+                      <option value="non-binaire" data-i18n="gender_nonbinary">Non binaire</option>
+                      <option value="non-divulgue" data-i18n="prefer_not">Je préfère ne pas répondre</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label for="nouvel-arrivant" data-i18n="field_newcomer">Nouvel arrivant (moins de 5 ans)</label>
+                    <select id="nouvel-arrivant" name="nouvelArrivant">
+                      <option value="" data-i18n="select_placeholder">Sélectionnez…</option>
+                      <option value="oui" data-i18n="answer_yes">Oui</option>
+                      <option value="non" data-i18n="answer_no">Non</option>
+                      <option value="non-divulgue" data-i18n="prefer_not">Je préfère ne pas répondre</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3b. Mentor profile -->
+          <div class="register-section role-fields" data-role="mentor" hidden role="group" aria-labelledby="sec-mentor">
+            <h3 class="register-section-title" id="sec-mentor"><span class="section-num">3</span><span data-i18n="register_step_mentor">Votre profil de mentor</span></h3>
+            <div class="form-field">
+              <label for="organisation"><span data-i18n="field_organization">Organisation ou employeur</span> *</label>
+              <input id="organisation" name="organisation" type="text" autocomplete="organization">
+            </div>
+            <div class="form-field">
+              <span class="field-label"><span data-i18n="field_expertise">Domaines d'expertise</span> *</span>
+              <div class="chip-group" id="expertise-group">
+                <label class="chip"><input type="checkbox" name="expertise" value="plan-affaires"><span data-i18n="exp_business_plan">Plan d'affaires</span></label>
+                <label class="chip"><input type="checkbox" name="expertise" value="finances"><span data-i18n="exp_finance">Finances</span></label>
+                <label class="chip"><input type="checkbox" name="expertise" value="marketing"><span data-i18n="exp_marketing">Marketing</span></label>
+                <label class="chip"><input type="checkbox" name="expertise" value="juridique"><span data-i18n="exp_legal">Aspects juridiques</span></label>
+                <label class="chip"><input type="checkbox" name="expertise" value="fiscalite"><span data-i18n="exp_tax">Fiscalité canadienne</span></label>
+                <label class="chip"><input type="checkbox" name="expertise" value="ventes"><span data-i18n="exp_sales">Ventes</span></label>
+                <label class="chip"><input type="checkbox" name="expertise" value="operations"><span data-i18n="exp_operations">Gestion des opérations</span></label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="experience"><span data-i18n="field_experience">Années d'expérience</span> *</label>
+                <select id="experience" name="experience">
+                  <option value="" data-i18n="select_placeholder">Sélectionnez…</option>
+                  <option value="0-5" data-i18n="exp_years_1">Moins de 5 ans</option>
+                  <option value="5-10" data-i18n="exp_years_2">5 à 10 ans</option>
+                  <option value="10-20" data-i18n="exp_years_3">10 à 20 ans</option>
+                  <option value="20+" data-i18n="exp_years_4">Plus de 20 ans</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="disponibilite"><span data-i18n="field_availability">Disponibilité par mois</span> *</label>
+                <select id="disponibilite" name="disponibilite">
+                  <option value="" data-i18n="select_placeholder">Sélectionnez…</option>
+                  <option value="1-2" data-i18n="avail_1">1 à 2 heures</option>
+                  <option value="3-5" data-i18n="avail_2">3 à 5 heures</option>
+                  <option value="5+" data-i18n="avail_3">Plus de 5 heures</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field">
+              <span class="field-label"><span data-i18n="field_mentor_languages">Langues de mentorat</span> *</span>
+              <div class="choice-row" id="mentor-lang-group">
+                <label class="check-field"><input type="checkbox" name="mentorLangues" value="fr" checked><span data-i18n="lang_fr">Français</span></label>
+                <label class="check-field"><input type="checkbox" name="mentorLangues" value="en"><span data-i18n="lang_en">Anglais</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3c. Staff -->
+          <div class="register-section role-fields" data-role="staff" hidden role="group" aria-labelledby="sec-staff">
+            <h3 class="register-section-title" id="sec-staff"><span class="section-num">3</span><span data-i18n="register_step_staff">Accès du personnel</span></h3>
+            <p class="auth-note">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+              <span data-i18n="staff_note">Les comptes du personnel sont activés uniquement sur invitation de SOFIFRAN.</span>
+            </p>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="code-invitation"><span data-i18n="field_invite_code">Code d'invitation</span> *</label>
+                <input id="code-invitation" name="codeInvitation" type="text" autocomplete="off">
+              </div>
+              <div class="form-field">
+                <label for="role-personnel"><span data-i18n="field_staff_role">Rôle</span> *</label>
+                <select id="role-personnel" name="rolePersonnel">
+                  <option value="" data-i18n="select_placeholder">Sélectionnez…</option>
+                  <option value="conseiller" data-i18n="staff_advisor">Conseiller ou conseillère</option>
+                  <option value="direction" data-i18n="staff_management">Direction</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Consent -->
+          <div class="register-section" role="group" aria-labelledby="sec-consent">
+            <h3 class="register-section-title" id="sec-consent"><span class="section-num">4</span><span data-i18n="register_step_consent">Consentement</span></h3>
+            <label class="check-field">
+              <input type="checkbox" id="consent" name="consent">
+              <span><span data-i18n="consent_privacy">J'accepte la politique de confidentialité et le traitement de mes renseignements personnels conformément à la LPRPDE.</span> *</span>
+            </label>
+            <label class="check-field">
+              <input type="checkbox" name="newsletter">
+              <span data-i18n="consent_news">J'accepte de recevoir les nouvelles et les occasions du programme.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary auth-submit" data-i18n="register_submit">Créer mon compte</button>
+        </form>
+
+        <p class="auth-switch">
+          <span data-i18n="register_have_account">Vous avez déjà un compte?</span>
+          <a href="login.html" data-i18n="register_login_link">Se connecter</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="shared/i18n.js"></script>
+  <script src="shared/mock-data.js"></script>
+  <script src="shared/alerts.js"></script>
+  <script src="shared/auth.js"></script>
+  <script src="register.js"></script>
+</body>
+</html>
