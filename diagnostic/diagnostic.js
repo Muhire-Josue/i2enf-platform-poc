@@ -320,7 +320,7 @@ function renderPriorities() {
         <h3>${t(`pr_${area}_title`)}</h3>
         <p>${t(`pr_${area}_text`)}</p>
         <ul class="priority-actions">${actions}</ul>
-        <a href="book-session.html" class="btn-outline btn-sm">${t('diag_book')}</a>
+        <a href="../book-session/dashboard.html" class="btn-outline btn-sm">${t('diag_book')}</a>
       </article>`;
   }).join('');
 }
