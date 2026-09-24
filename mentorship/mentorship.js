@@ -215,7 +215,7 @@ function setup() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('booked')) showAlert('success', 'ment_booked_title', ['ment_booked_body']);
   if (params.get('rescheduled')) showAlert('success', 'ment_rescheduled_title', ['ment_rescheduled_body']);
-  if (params.toString()) history.replaceState(null, '', 'mentorship.html');
+  if (params.toString()) history.replaceState(null, '', 'dashboard.html');
 
   const dialog = document.getElementById('cancel-dialog');
   document.getElementById('upcoming').addEventListener('click', (e) => {

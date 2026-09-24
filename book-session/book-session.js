@@ -213,7 +213,7 @@ function setup() {
       note: booking.note.trim(),
     });
     if (rescheduling) cancelSession(rescheduling.id);
-    window.location.href = `mentorship.html?${rescheduling ? 'rescheduled' : 'booked'}=1`;
+    window.location.href = `../mentorship/dashboard.html?${rescheduling ? 'rescheduled' : 'booked'}=1`;
   });
 }
 

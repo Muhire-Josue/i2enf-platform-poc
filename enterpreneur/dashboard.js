@@ -338,8 +338,8 @@ function renderSession() {
       <div><strong>${s.mentor}</strong><small>${t('dash_mentor_expertise')}</small></div>
     </div>
     <div class="session-actions">
-      <a href="mentorship.html" class="btn-primary">${t('dash_join')}</a>
-      <a href="mentorship.html" class="btn-outline-light">${t('dash_reschedule')}</a>
+      <a href="#" class="btn-primary">${t('dash_join')}</a>
+      <a href="../book-session/dashboard.html" class="btn-outline-light">${t('dash_reschedule')}</a>
     </div>`;
 }
 
