@@ -113,7 +113,7 @@ function renderUpcoming() {
   document.getElementById('upcoming-count').textContent = t('ment_upcoming_count', { n: sessions.length });
   const list = document.getElementById('upcoming');
   if (!sessions.length) {
-    list.innerHTML = `<li class="empty-state">${t('ment_empty')}<br><a href="book-session.html" class="btn-primary btn-sm">${t('ment_book')}</a></li>`;
+    list.innerHTML = `<li class="empty-state">${t('ment_empty')}<br><a href="../book-session/dashboard.html" class="btn-primary btn-sm">${t('ment_book')}</a></li>`;
     return;
   }
   list.innerHTML = sessions.map((s, i) => {
@@ -134,7 +134,7 @@ function renderUpcoming() {
             ${video
               ? `<button type="button" class="btn-primary btn-sm" data-join="${s.id}">${t('ment_join')}</button>`
               : `<a href="${OFFICE_MAP}" target="_blank" rel="noopener" class="btn-primary btn-sm">${t('ment_directions')}</a>`}
-            <a href="book-session.html?reschedule=${encodeURIComponent(s.id)}" class="btn-outline btn-sm">${t('ment_reschedule')}</a>
+            <a href="../book-session/dashboard.html?reschedule=${encodeURIComponent(s.id)}" class="btn-outline btn-sm">${t('ment_reschedule')}</a>
             <button type="button" class="btn-text" data-cancel="${s.id}">${t('ment_cancel')}</button>
           </div>
         </div>
@@ -185,7 +185,7 @@ function renderMentor() {
       <li>${ICONS.topic}${t('ment_languages', { list: langList(mentor.languages) })}</li>
     </ul>
     <div class="mentor-buttons">
-      <a href="book-session.html?mentor=${mentor.id}" class="btn-primary btn-sm">${t('ment_book_with')}</a>
+      <a href="../book-session/dashboard.html?mentor=${mentor.id}" class="btn-primary btn-sm">${t('ment_book_with')}</a>
       <a href="mailto:mentor@demo.ca" class="btn-outline-light btn-sm">${t('ment_write')}</a>
     </div>`;
 }
@@ -199,7 +199,7 @@ function renderExperts() {
         <small>${t(m.titleKey)} · ${langList(m.languages)}</small>
         <div class="tag-list">${m.expertise.map((a) => `<span class="tag">${t(a)}</span>`).join('')}</div>
       </div>
-      <a href="book-session.html?mentor=${m.id}" class="btn-outline btn-sm">${t('ment_book_with')}</a>
+      <a href="../book-session/dashboard.html?mentor=${m.id}" class="btn-outline btn-sm">${t('ment_book_with')}</a>
     </li>`).join('');
 }
 
