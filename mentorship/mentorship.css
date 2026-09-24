@@ -1,0 +1,66 @@
+/* mentorship.css — "Mentorat" page (shared member-area styles live in shared/app.css) */
+
+/* Upcoming sessions */
+.session-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.session-row {
+  display: flex; gap: 18px; align-items: flex-start;
+  padding: 18px;
+  border: 1px solid var(--color-border); border-radius: var(--radius-md);
+}
+.session-row.is-next { border-color: var(--color-terracotta); box-shadow: 0 0 0 3px rgba(181, 101, 47, 0.1); }
+.session-info { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.session-when { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 17px; font-weight: 600; color: var(--color-navy); }
+.session-details { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--color-text-muted); }
+.session-details span { display: inline-flex; align-items: center; gap: 6px; }
+.session-details svg { width: 16px; height: 16px; color: var(--color-terracotta); }
+.session-with { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-navy-light); }
+.session-with .user-avatar { width: 30px; height: 30px; font-size: 12px; }
+.session-buttons { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+
+/* Past sessions with notes */
+.past-list { display: flex; flex-direction: column; gap: 12px; }
+.past-item { border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+.past-item summary {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 18px; cursor: pointer; list-style: none;
+}
+.past-item summary::-webkit-details-marker { display: none; }
+.past-item summary:hover { background: var(--color-ivory); }
+.past-summary-text { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.past-summary-text strong { font-size: 16px; color: var(--color-navy); }
+.past-summary-text span { font-size: 14px; color: var(--color-text-muted); }
+.past-chevron { flex-shrink: 0; color: var(--color-text-muted); transition: transform 0.2s ease; }
+.past-item[open] .past-chevron { transform: rotate(180deg); }
+.past-notes { padding: 4px 18px 20px 90px; display: flex; flex-direction: column; gap: 12px; }
+.past-notes p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-navy-light); }
+.past-notes h4 { margin: 0; font-family: var(--font-body); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); }
+.past-actions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.past-actions li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--color-navy); }
+.past-actions li::before { content: ""; flex-shrink: 0; width: 7px; height: 7px; margin-top: 8px; border-radius: 50%; background: var(--color-terracotta); }
+
+/* My mentor */
+.mentor-card { gap: 18px; }
+.mentor-top { display: flex; align-items: center; gap: 16px; }
+.mentor-top .user-avatar { width: 64px; height: 64px; font-size: 22px; background: var(--color-gold); color: var(--color-navy); }
+.mentor-top h2 { font-size: 24px; }
+.mentor-top small { display: block; font-size: 14px; color: var(--color-text-onNavy-muted); margin-top: 2px; }
+.mentor-card p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-text-onNavy); }
+.mentor-card .tag { background: rgba(250, 247, 242, 0.12); color: var(--color-ivory); }
+.mentor-facts { list-style: none; margin: 0; padding: 16px 0 0; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid rgba(250, 247, 242, 0.14); font-size: 14px; color: var(--color-text-onNavy); }
+.mentor-facts li { display: flex; align-items: center; gap: 10px; }
+.mentor-facts svg { color: var(--color-gold); flex-shrink: 0; }
+.mentor-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.mentor-buttons a { flex: 1; text-align: center; }
+
+/* Other experts */
+.expert-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.expert { display: flex; gap: 14px; align-items: flex-start; }
+.expert .user-avatar { width: 44px; height: 44px; background: var(--color-ivory-alt); color: var(--color-terracotta); }
+.expert-body { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.expert-body strong { font-size: 16px; color: var(--color-navy); }
+.expert-body small { font-size: 13px; color: var(--color-text-muted); }
+
+@media (max-width: 640px) {
+  .session-row { flex-direction: column; }
+  .past-notes { padding-left: 18px; }
+}

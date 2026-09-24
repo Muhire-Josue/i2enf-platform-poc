@@ -8,13 +8,15 @@ const ALERT_ICONS = {
 };
 
 /**
- * Show a Bootstrap alert in #auth-alerts.
+ * Show a Bootstrap alert in #page-alerts (member pages) or #auth-alerts (login pages).
  * @param {'danger'|'success'} type
  * @param {string} titleKey - translation key for the bold title
  * @param {string[]} messageKeys - translation keys for the details (one line or a list)
  */
+const alertsContainer = () => document.getElementById('page-alerts') || document.getElementById('auth-alerts');
+
 function showAlert(type, titleKey, messageKeys = []) {
-  const container = document.getElementById('auth-alerts');
+  const container = alertsContainer();
   if (!container) return;
 
   const alert = document.createElement('div');
@@ -44,6 +46,6 @@ function showAlert(type, titleKey, messageKeys = []) {
 }
 
 function clearAlerts() {
-  const container = document.getElementById('auth-alerts');
+  const container = alertsContainer();
   if (container) container.innerHTML = '';
 }
