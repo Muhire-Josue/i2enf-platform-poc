@@ -72,6 +72,8 @@ input, textarea, select { font-family: var(--font-body); }
   display: inline-block;
   font-size: 15px; font-weight: 600;
   padding: 10px 18px;
+  background: transparent;
+  color: var(--color-navy);
   border: 1px solid var(--color-navy);
   border-radius: var(--radius-md);
   transition: background-color 0.15s ease, color 0.15s ease;
@@ -84,6 +86,7 @@ input, textarea, select { font-family: var(--font-body); }
   display: inline-block;
   font-size: 15px; font-weight: 600;
   padding: 14px 28px;
+  background: transparent;
   border: 1px solid var(--color-ivory);
   border-radius: var(--radius-md);
   color: var(--color-ivory);
