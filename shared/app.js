@@ -8,8 +8,16 @@ Object.assign(translations.fr, {
   app_nav_diagnostic: "Mon diagnostic",
   app_nav_mentorship: "Mentorat",
   app_nav_file: "Dossier d'entreprise",
-  app_nav_label: "Espace entrepreneur",
+  app_nav_label_entrepreneur: "Espace entrepreneur",
+  app_nav_label_mentor: "Espace mentor",
+  app_nav_label_staff: "Espace gestion",
   app_logout: "Déconnexion",
+  // Same text under the names used by headers written directly in the HTML
+  dash_nav_home: "Tableau de bord",
+  dash_nav_diagnostic: "Mon diagnostic",
+  dash_nav_mentorship: "Mentorat",
+  dash_nav_file: "Dossier d'entreprise",
+  dash_logout: "Déconnexion",
   app_kicker: "Espace entrepreneur",
   app_back_dashboard: "Retour au tableau de bord",
   season_winter: "Hiver", season_spring: "Printemps", season_summer: "Été", season_fall: "Automne",
@@ -47,8 +55,16 @@ Object.assign(translations.en, {
   app_nav_diagnostic: "My diagnostic",
   app_nav_mentorship: "Mentorship",
   app_nav_file: "Business file",
-  app_nav_label: "Entrepreneur area",
+  app_nav_label_entrepreneur: "Entrepreneur area",
+  app_nav_label_mentor: "Mentor area",
+  app_nav_label_staff: "Staff area",
   app_logout: "Log out",
+  // Same text under the names used by headers written directly in the HTML
+  dash_nav_home: "Dashboard",
+  dash_nav_diagnostic: "My diagnostic",
+  dash_nav_mentorship: "Mentorship",
+  dash_nav_file: "Business file",
+  dash_logout: "Log out",
   app_kicker: "Entrepreneur area",
   app_back_dashboard: "Back to dashboard",
   season_winter: "Winter", season_spring: "Spring", season_summer: "Summer", season_fall: "Fall",
@@ -145,18 +161,19 @@ let APP_SESSION = null;
 /**
  * Start a member-area page.
  * @param {object} options
- * @param {string} options.page   - which header link is active ('dashboard', 'diagnostic', 'mentorship', 'business-file')
+ * @param {string} options.page   - which header link is active (e.g. 'dashboard', 'mentorship', 'mentor-dashboard')
+ * @param {string} [options.role] - who can open the page: 'entrepreneur' (default), 'mentor' or 'staff'
  * @param {Function} options.render - draws the page; called again when the language changes
  * @param {Function} [options.setup] - runs once after the first render (event listeners)
  */
-function initAppPage({ page, render, setup }) {
+function initAppPage({ page, role = 'entrepreneur', render, setup }) {
   APP_SESSION = getSession();
   if (!APP_SESSION) { window.location.replace('login.html'); return; }
-  if (APP_SESSION.role !== 'entrepreneur') { window.location.replace(ROLE_HOME[APP_SESSION.role] || 'login.html'); return; }
+  if (APP_SESSION.role !== role) { window.location.replace(ROLE_HOME[APP_SESSION.role] || 'login.html'); return; }
 
   document.addEventListener('DOMContentLoaded', () => {
     const renderAll = () => {
-      renderAppHeader(page, renderAll);
+      renderAppHeader(page, role, renderAll);
       applyTranslations();
       render();
     };
@@ -165,27 +182,35 @@ function initAppPage({ page, render, setup }) {
   });
 }
 
-const NAV_ITEMS = [
-  { page: 'dashboard', href: 'dashboard.html', key: 'app_nav_home', icon: ICONS.home },
-  { page: 'diagnostic', href: 'diagnostic.html', key: 'app_nav_diagnostic', icon: ICONS.diagnostic },
-  { page: 'mentorship', href: 'mentorship.html', key: 'app_nav_mentorship', icon: ICONS.mentor },
-  { page: 'business-file', href: 'business-file.html', key: 'app_nav_file', icon: ICONS.folder },
-];
+// Header links for each type of account
+const NAV_ITEMS = {
+  entrepreneur: [
+    { page: 'dashboard', href: 'dashboard.html', key: 'app_nav_home', icon: ICONS.home },
+    { page: 'diagnostic', href: 'diagnostic.html', key: 'app_nav_diagnostic', icon: ICONS.diagnostic },
+    { page: 'mentorship', href: 'mentorship.html', key: 'app_nav_mentorship', icon: ICONS.mentor },
+    { page: 'business-file', href: 'business-file.html', key: 'app_nav_file', icon: ICONS.folder },
+  ],
+  mentor: [
+    { page: 'mentor-dashboard', href: 'mentor-dashboard.html', key: 'app_nav_home', icon: ICONS.home },
+  ],
+};
+const NAV_LABELS = { entrepreneur: 'app_nav_label_entrepreneur', mentor: 'app_nav_label_mentor' };
 
-function renderAppHeader(activePage, onLangChange) {
+function renderAppHeader(activePage, role, onLangChange) {
   const header = document.getElementById('app-header');
-  if (!header) return;
-  const name = APP_SESSION.prenom || 'Entrepreneur';
+  if (!header) { connectStaticHeader(onLangChange); return; }
+  const name = APP_SESSION.prenom || '';
   const lang = getLang();
+  const items = NAV_ITEMS[role] || [];
 
   header.innerHTML = `
     <div class="container app-header-inner">
-      <a href="dashboard.html" class="logo">
+      <a href="${ROLE_HOME[role] || 'index.html'}" class="logo">
         <span class="logo-main">I2ENF</span>
         <span class="logo-sub">SOFIFRAN</span>
       </a>
-      <nav class="app-nav" aria-label="${t('app_nav_label')}">
-        ${NAV_ITEMS.map((item) => `
+      <nav class="app-nav" aria-label="${t(NAV_LABELS[role] || 'app_nav_label_entrepreneur')}">
+        ${items.map((item) => `
           <a href="${item.href}" class="${item.page === activePage ? 'active' : ''}" ${item.page === activePage ? 'aria-current="page"' : ''}>
             ${item.icon}<span>${t(item.key)}</span>
           </a>`).join('')}
@@ -213,6 +238,39 @@ function renderAppHeader(activePage, onLangChange) {
     clearSession();
     window.location.href = 'index.html';
   });
+}
+
+// Pages can also write their own header in the HTML (for example with folder paths
+// like ../enterpreneur/dashboard.html). Then we keep that header and only fill in
+// the user's name and connect the language and log-out buttons.
+function connectStaticHeader(onLangChange) {
+  const header = document.querySelector('.app-header');
+  if (!header) return;
+  const name = APP_SESSION.prenom || '';
+  const nameEl = header.querySelector('.user-name');
+  const avatarEl = header.querySelector('.user-avatar');
+  if (nameEl) nameEl.textContent = name;
+  if (avatarEl) avatarEl.textContent = name.charAt(0).toUpperCase();
+
+  // This runs again after each language change, so connect each button only once
+  header.querySelectorAll('.lang-toggle [data-lang]').forEach((btn) => {
+    if (btn.dataset.connected) return;
+    btn.dataset.connected = 'true';
+    btn.addEventListener('click', () => {
+      setLang(btn.getAttribute('data-lang'));
+      onLangChange();
+    });
+  });
+
+  // Log out: clear the session, then a link continues to its own page (e.g. ../auth/login.html)
+  const logout = header.querySelector('#logout-btn');
+  if (logout && !logout.dataset.connected) {
+    logout.dataset.connected = 'true';
+    logout.addEventListener('click', () => {
+      clearSession();
+      if (logout.tagName !== 'A') window.location.href = 'index.html';
+    });
+  }
 }
 
 // ---- Per-user storage (demo) ----
