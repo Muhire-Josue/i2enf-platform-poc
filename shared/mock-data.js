@@ -66,9 +66,9 @@ function setSession(user, remember) {
 
 // Home page for each type of account
 const ROLE_HOME = {
-  entrepreneur: 'dashboard.html',
-  mentor: 'mentor-dashboard.html',
-  staff: 'applications.html',
+  entrepreneur: '../enterpreneur/dashboard.html',
+  mentor: '../mentor/mentor-dashboard.html',
+  staff: '../staff/applications.html',
 };
 
 function demoLogin(email) {
