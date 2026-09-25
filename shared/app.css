@@ -211,3 +211,23 @@
   .page-actions, .page-actions a { width: 100%; text-align: center; }
   .dash-card { padding: 22px 18px; }
 }
+
+/* ---- Compact header so the menu never pushes the buttons off the page ---- */
+.app-nav { min-width: 0; overflow-x: auto; scrollbar-width: none; }
+/* Long menus (staff: 6 links) */
+@media (max-width: 1500px) {
+  .app-header:has(.app-nav a:nth-child(5)) .app-header-inner { gap: 20px; }
+  .app-header:has(.app-nav a:nth-child(5)) .app-nav a { padding: 8px 10px; gap: 6px; font-size: 14px; }
+  .app-header:has(.app-nav a:nth-child(5)) .app-header-actions { gap: 12px; }
+  .app-header:has(.app-nav a:nth-child(5)) .user-name { display: none; }
+}
+@media (max-width: 1360px) and (min-width: 1101px) {
+  .app-header:has(.app-nav a:nth-child(5)) .app-nav a svg { display: none; }
+}
+/* Short menus (entrepreneur: 4 links) only need it on narrower screens */
+@media (max-width: 1280px) and (min-width: 1101px) {
+  .app-header-inner { gap: 20px; }
+  .app-nav a { padding: 8px 10px; gap: 6px; font-size: 14px; }
+  .app-header-actions { gap: 12px; }
+  .user-name { display: none; }
+}
