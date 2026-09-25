@@ -65,7 +65,7 @@ const PAGES = {
   dashboard: 'enterpreneur/dashboard.html',
   diagnostic: 'diagnostic/dashboard.html',            // ← check
   mentorship: 'mentorship/dashboard.html',
-  'book-session': 'mentorship/book-session.html',     // ← check
+  'book-session': 'mentorship/dashboard.html',     // ← check
   'business-file': 'business-files/dashboard.html',
   // Mentor
   'mentor-dashboard': 'mentor/mentor-dashboard.html', // ← check
@@ -73,10 +73,9 @@ const PAGES = {
   admin: 'admin/admin.html',
   applications: 'applications/dashboard.html',            // ← check
   cases: 'cases/dashboard.html',                          // ← check
-  scheduling: 'admin/scheduling.html',                // ← check
-  matching: 'admin/matching.html',                    // ← check
-  kpi: 'admin/kpi-dashboard.html',                    // ← check
-};
+  matching: 'matching/dashboard.html',                    // ← check
+  kpi: 'kpi/dashboard.html',                    // ← check
+};  
 
 // The project root, worked out from where this file is loaded (…/shared/mock-data.js),
 // so links work from any folder, on Live Server and on GitHub Pages
