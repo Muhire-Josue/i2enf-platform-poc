@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Indicateurs — I2ENF</title>
+  <!-- Bootstrap (banners only) first, so the site's own styles take priority -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/style.css">
+  <link rel="stylesheet" href="../shared/app.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="app-page">
+
+  <header class="app-header" id="app-header"></header>
+
+  <main class="container page">
+    <section class="page-head">
+      <div class="page-head-text">
+        <span class="kicker" data-i18n="staff_kicker">Espace personnel</span>
+        <h1 data-i18n="kpi_title">Indicateurs de rendement</h1>
+        <p id="kpi-intro"></p>
+      </div>
+      <div class="page-actions kpi-actions">
+        <div class="kpi-period" id="kpi-period" role="radiogroup" aria-label="Période"></div>
+        <button type="button" class="btn-outline" id="kpi-export" data-i18n="kpi_export">Exporter (CSV)</button>
+      </div>
+    </section>
+
+    <div id="page-alerts" aria-live="polite"></div>
+
+    <section class="kpi-cards" id="kpi-cards" aria-label="Indicateurs clés"></section>
+
+    <div class="kpi-row">
+      <section class="dash-card">
+        <div class="card-head">
+          <h2 data-i18n="kpi_chart_apps">Candidatures et admissions</h2>
+          <div class="kpi-legend" id="kpi-chart-legend"></div>
+        </div>
+        <p class="card-sub" data-i18n="kpi_chart_apps_sub">Six derniers mois</p>
+        <div class="kpi-chart" id="kpi-chart"></div>
+      </section>
+
+      <section class="dash-card">
+        <div class="card-head">
+          <h2 data-i18n="kpi_funnel">Parcours des candidatures</h2>
+        </div>
+        <p class="card-sub" id="kpi-funnel-sub"></p>
+        <ol class="kpi-funnel" id="kpi-funnel"></ol>
+      </section>
+    </div>
+
+    <div class="kpi-row">
+      <section class="dash-card">
+        <div class="card-head">
+          <h2 data-i18n="kpi_diag">Progression au diagnostic</h2>
+          <div class="kpi-legend" id="kpi-diag-legend"></div>
+        </div>
+        <p class="card-sub" data-i18n="kpi_diag_sub">Score moyen par domaine, à l'entrée et à la réévaluation de mi-parcours (cohortes terminées).</p>
+        <ul class="kpi-diag" id="kpi-diag"></ul>
+      </section>
+
+      <section class="dash-card">
+        <div class="card-head">
+          <h2 data-i18n="kpi_profile">Portrait des participants</h2>
+        </div>
+        <p class="card-sub" id="kpi-profile-sub"></p>
+        <div class="kpi-profile" id="kpi-profile"></div>
+        <p class="kpi-privacy" id="kpi-privacy"></p>
+      </section>
+    </div>
+
+    <section class="dash-card">
+      <div class="card-head">
+        <h2 data-i18n="kpi_targets">Cibles de la première année</h2>
+        <span class="card-count" id="kpi-elapsed"></span>
+      </div>
+      <p class="card-sub" data-i18n="kpi_targets_sub">Cibles provisoires, à confirmer avec le bailleur de fonds. Le statut compare l'avancement à la portion de l'année écoulée.</p>
+      <div class="kpi-targets-head" aria-hidden="true">
+        <span data-i18n="kpi_col_indicator">Indicateur</span>
+        <span data-i18n="kpi_col_actual">Résultat</span>
+        <span data-i18n="kpi_col_target">Cible</span>
+        <span data-i18n="kpi_col_progress">Avancement</span>
+        <span data-i18n="kpi_col_status">Statut</span>
+      </div>
+      <ul class="kpi-targets" id="kpi-targets"></ul>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../shared/i18n.js"></script>
+  <script src="../shared/mock-data.js"></script>
+  <script src="../shared/alerts.js"></script>
+  <script src="../shared/app.js"></script>
+  <script src="../shared/staff.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
