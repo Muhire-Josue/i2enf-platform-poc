@@ -212,7 +212,7 @@ function renderSession() {
     card.innerHTML = `
       <span class="kicker kicker-light">${t('dash_session_kicker')}</span>
       <p class="session-date">${t('dash_no_session')}</p>
-      <div class="session-actions"><a href="book-session.html" class="btn-primary">${t('dash_book_session')}</a></div>`;
+      <div class="session-actions"><a href="../book-session/dashboard.html" class="btn-primary">${t('dash_book_session')}</a></div>`;
     return;
   }
   const mentor = mentorById(s.mentorId);
@@ -232,8 +232,8 @@ function renderSession() {
       <div><strong>${mentor.name}</strong><small>${t(mentor.titleKey)}</small></div>
     </div>
     <div class="session-actions">
-      <a href="mentorship/dashboard.html" class="btn-primary">${t('dash_join')}</a>
-      <a href="book-session.html?reschedule=${encodeURIComponent(s.id)}" class="btn-outline-light">${t('dash_reschedule')}</a>
+      <a href="../mentorship/dashboard.html" class="btn-primary">${t('dash_join')}</a>
+      <a href="../book-session/dashboard.html?reschedule=${encodeURIComponent(s.id)}" class="btn-outline-light">${t('dash_reschedule')}</a>
     </div>`;
 }
 
