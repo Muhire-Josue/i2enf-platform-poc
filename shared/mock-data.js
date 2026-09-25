@@ -64,12 +64,45 @@ function setSession(user, remember) {
 // or registered) open their own area; any other email opens the entrepreneur
 // area. Real sign-in is handled by Microsoft Entra External ID.
 
-// Home page for each type of account
-const ROLE_HOME = {
-  entrepreneur: '../enterpreneur/dashboard.html',
-  mentor: '../mentor/mentor-dashboard.html',
-  staff: '../staff/applications.html',
+const PAGES = {
+  home: 'index.html',
+  login: 'auth/login.html',
+  register: 'auth/register.html',                  // ← check
+  // Entrepreneur
+  dashboard: 'enterpreneur/dashboard.html',
+  diagnostic: 'diagnostic/dashboard.html',          // ← check (your diagnostic page's folder)
+  mentorship: 'mentorship/dashboard.html',
+  'book-session': 'mentorship/book-session.html',   // ← check
+  'business-file': 'business-files/dashboard.html',
+  // Mentor
+  'mentor-dashboard': 'mentor/mentor-dashboard.html', // ← check
+  // Staff
+  admin: 'admin/admin.html',
+  applications: 'admin/applications.html',          // ← check
+  cases: 'admin/cases.html',                        // ← check
+  scheduling: 'admin/scheduling.html',              // ← check
+  matching: 'admin/matching.html',                  // ← check
+  kpi: 'admin/kpi-dashboard.html',                  // ← check
 };
+
+// The project root, worked out from where this file is loaded (…/shared/mock-data.js),
+// so links work from any folder, on Live Server and on GitHub Pages
+const SITE_ROOT = new URL('../', document.currentScript.src);
+const pageUrl = (name) => new URL(PAGES[name] || name, SITE_ROOT).href;
+
+// Home page for each type of account (names from PAGES)
+const ROLE_HOME = {
+  entrepreneur: 'dashboard',
+  mentor: 'mentor-dashboard',
+  staff: 'admin',
+};
+
+// // Home page for each type of account
+// const ROLE_HOME = {
+//   entrepreneur: '../enterpreneur/dashboard.html',
+//   mentor: '../mentor/mentor-dashboard.html',
+//   staff: '../staff/applications.html',
+// };
 
 function demoLogin(email) {
   const known = findUserByEmail(email);
