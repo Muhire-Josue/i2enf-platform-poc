@@ -1,0 +1,81 @@
+/* scheduling.css — staff "Ateliers et événements" page (shared member-area styles live in shared/app.css) */
+
+/* Summary figures */
+.sch-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.sch-stat {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 22px;
+  background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+}
+.sch-stat-icon {
+  flex-shrink: 0; width: 46px; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px; background: var(--color-ivory-alt); color: var(--color-terracotta);
+}
+.sch-stat-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sch-stat-label { font-size: 14px; color: var(--color-text-muted); }
+.sch-stat-value { font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; color: var(--color-navy); }
+.sch-stat-note { font-size: 13px; color: var(--color-text-muted); }
+
+/* Event rows */
+.sch-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.sch-event {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 190px 170px;
+  gap: 20px; align-items: center;
+  padding: 18px 4px;
+  border-top: 1px solid var(--color-border);
+}
+.sch-event:first-child { border-top: none; padding-top: 4px; }
+.sch-event.is-new { animation: sch-highlight 2.4s ease; }
+@keyframes sch-highlight { from { background: rgba(181, 101, 47, 0.1); } to { background: transparent; } }
+.sch-info { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.sch-title { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 16px; font-weight: 600; color: var(--color-navy); }
+.sch-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14px; color: var(--color-text-muted); }
+.sch-meta span { display: inline-flex; align-items: center; gap: 6px; }
+.sch-meta svg { width: 16px; height: 16px; color: var(--color-terracotta); }
+.sch-fill { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--color-navy-light); }
+.sch-fill strong { color: var(--color-navy); }
+.sch-fill .progress-track { height: 8px; }
+.sch-fill.is-full .progress-fill { background: #15803D; }
+.sch-actions { display: flex; gap: 6px; align-items: center; }
+@media (min-width: 1101px) { .sch-actions { justify-content: flex-start; } }
+.sch-empty { padding: 28px 8px; text-align: center; font-size: 15px; color: var(--color-text-muted); }
+.sch-past .event-date { opacity: 0.7; }
+
+/* Event types */
+.type-workshop { background: rgba(181, 101, 47, 0.12); color: var(--color-terracotta); }
+.type-networking { background: rgba(31, 58, 95, 0.08); color: var(--color-navy); }
+.type-info { background: rgba(217, 165, 116, 0.22); color: #8A5A1F; }
+
+/* Dialogs */
+.sch-dialog { width: min(640px, calc(100% - 32px)); }
+.sch-dialog form { max-height: calc(100vh - 64px); overflow-y: auto; }
+.sch-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sch-capacity { max-width: 220px; }
+.sch-errors {
+  margin: 0; padding: 12px 14px 12px 32px;
+  border-radius: var(--radius-md); background: rgba(180, 35, 24, 0.08);
+  font-size: 14px; font-weight: 600; color: #B42318;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.sch-people { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
+.sch-people li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-navy); }
+.sch-people .user-avatar { width: 32px; height: 32px; font-size: 12px; background: var(--color-ivory-alt); color: var(--color-terracotta); }
+.sch-people .more { grid-column: 1 / -1; color: var(--color-text-muted); }
+.sch-people .none { grid-column: 1 / -1; padding: 16px; justify-content: center; border: 1px dashed var(--color-border-strong); border-radius: var(--radius-md); color: var(--color-text-muted); }
+
+@media (max-width: 1100px) {
+  .sch-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sch-event { grid-template-columns: auto minmax(0, 1fr); }
+  .sch-fill, .sch-actions { grid-column: 2; }
+}
+
+@media (max-width: 640px) {
+  .sch-stats { grid-template-columns: 1fr; gap: 12px; }
+  .sch-row-3 { grid-template-columns: 1fr; }
+  .sch-people { grid-template-columns: 1fr; }
+  .page-actions button { width: 100%; }
+  .sch-event { grid-template-columns: minmax(0, 1fr); }
+  .sch-fill, .sch-actions { grid-column: 1; }
+}

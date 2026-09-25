@@ -53,36 +53,29 @@ function registerUser(user) {
   localStorage.setItem('i2enf_users', JSON.stringify(users));
 }
 
-function setSession(user, remember) {
-  const session = JSON.stringify({ email: user.email, role: user.role, prenom: user.prenom });
-  // "Remember me" keeps the session after the browser closes
-  (remember ? localStorage : sessionStorage).setItem('i2enf_session', session);
-}
-
-// ---- Demo login ----
-// For the presentation, any email and password logs in. Known accounts (demo
-// or registered) open their own area; any other email opens the entrepreneur
-// area. Real sign-in is handled by Microsoft Entra External ID.
-
+// ---- Where each page lives ----
+// Paths are relative to the project root (the folder that contains "shared/").
+// If you move pages into folders, change the paths here: every redirect and
+// every link built by the scripts reads this list.
 const PAGES = {
   home: 'index.html',
   login: 'auth/login.html',
-  register: 'auth/register.html',                  // ← check
+  register: 'auth/register.html',                     // ← check
   // Entrepreneur
   dashboard: 'enterpreneur/dashboard.html',
-  diagnostic: 'diagnostic/dashboard.html',          // ← check (your diagnostic page's folder)
+  diagnostic: 'diagnostic/dashboard.html',            // ← check
   mentorship: 'mentorship/dashboard.html',
-  'book-session': 'mentorship/book-session.html',   // ← check
+  'book-session': 'mentorship/book-session.html',     // ← check
   'business-file': 'business-files/dashboard.html',
   // Mentor
   'mentor-dashboard': 'mentor/mentor-dashboard.html', // ← check
   // Staff
   admin: 'admin/admin.html',
-  applications: 'admin/applications.html',          // ← check
-  cases: 'admin/cases.html',                        // ← check
-  scheduling: 'admin/scheduling.html',              // ← check
-  matching: 'admin/matching.html',                  // ← check
-  kpi: 'admin/kpi-dashboard.html',                  // ← check
+  applications: 'admin/applications.html',            // ← check
+  cases: 'admin/cases.html',                          // ← check
+  scheduling: 'admin/scheduling.html',                // ← check
+  matching: 'admin/matching.html',                    // ← check
+  kpi: 'admin/kpi-dashboard.html',                    // ← check
 };
 
 // The project root, worked out from where this file is loaded (…/shared/mock-data.js),
@@ -97,31 +90,12 @@ const ROLE_HOME = {
   staff: 'admin',
 };
 
-// // Home page for each type of account
-// const ROLE_HOME = {
-//   entrepreneur: '../enterpreneur/dashboard.html',
-//   mentor: '../mentor/mentor-dashboard.html',
-//   staff: '../staff/applications.html',
-// };
-
-function demoLogin(email) {
+// ---- Demo login screen ----
+// The proof of concept has no sign-in: nothing is checked and nothing is saved.
+// The login screen only opens the area that matches the email typed
+// (demo or registered account); any other email opens the entrepreneur area.
+// Real sign-in will be handled by Microsoft Entra External ID.
+function homeForEmail(email) {
   const known = findUserByEmail(email);
-  if (known) return known;
-  // Unknown email: sign in as an entrepreneur, using the email to make a first name
-  const first = email.trim().split('@')[0].split(/[._\-0-9]+/).filter(Boolean)[0] || 'Entrepreneur';
-  return {
-    role: 'entrepreneur',
-    prenom: first.charAt(0).toUpperCase() + first.slice(1).toLowerCase(),
-    email: email.trim().toLowerCase(),
-  };
-}
-
-function getSession() {
-  const raw = sessionStorage.getItem('i2enf_session') || localStorage.getItem('i2enf_session');
-  return raw ? JSON.parse(raw) : null;
-}
-
-function clearSession() {
-  sessionStorage.removeItem('i2enf_session');
-  localStorage.removeItem('i2enf_session');
+  return pageUrl(ROLE_HOME[known ? known.role : 'entrepreneur'] || 'dashboard');
 }

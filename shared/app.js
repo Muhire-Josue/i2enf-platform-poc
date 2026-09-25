@@ -1,5 +1,5 @@
 // shared/app.js — shared by every page of the member area (after login):
-// the header, the login check, date helpers, and the demo data the pages share
+// the header, date helpers, and the demo data the pages share
 // (mentors, sessions, documents, plan). Pages call initAppPage({ page, render }).
 
 // ---- Text shared by member-area pages ----
@@ -155,21 +155,27 @@ const ICONS = {
   back: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>',
 };
 
-// ---- Login check and page start ----
-let APP_SESSION = null;
+// ---- Page start ----
+// No sign-in in the proof of concept: every page opens directly and shows
+// its area's demo person. Access control belongs to the real back end (Microsoft Entra).
+let APP_SESSION = null; // the person the page is shown for
+
+const DEMO_PERSON = {
+  entrepreneur: { email: 'entrepreneur@demo.ca', role: 'entrepreneur', prenom: 'Amélie' },
+  mentor: { email: 'mentor@demo.ca', role: 'mentor', prenom: 'Karim' },
+  staff: { email: 'conseiller@demo.ca', role: 'staff', prenom: 'Sophie' },
+};
 
 /**
  * Start a member-area page.
  * @param {object} options
  * @param {string} options.page   - which header link is active (e.g. 'dashboard', 'mentorship', 'mentor-dashboard')
- * @param {string} [options.role] - who can open the page: 'entrepreneur' (default), 'mentor' or 'staff'
+ * @param {string} [options.role] - which area the page belongs to: 'entrepreneur' (default), 'mentor' or 'staff'
  * @param {Function} options.render - draws the page; called again when the language changes
  * @param {Function} [options.setup] - runs once after the first render (event listeners)
  */
 function initAppPage({ page, role = 'entrepreneur', render, setup }) {
-  APP_SESSION = getSession();
-  if (!APP_SESSION) { window.location.replace('login.html'); return; }
-  if (APP_SESSION.role !== role) { window.location.replace(ROLE_HOME[APP_SESSION.role] || 'login.html'); return; }
+  APP_SESSION = DEMO_PERSON[role];
 
   document.addEventListener('DOMContentLoaded', () => {
     const renderAll = () => {
@@ -182,7 +188,7 @@ function initAppPage({ page, role = 'entrepreneur', render, setup }) {
   });
 }
 
-// Header links for each type of account
+// Header links for each type of account ("page" is a name from PAGES in shared/mock-data.js)
 const NAV_ITEMS = {
   entrepreneur: [
     { page: 'dashboard', href: 'dashboard.html', key: 'app_nav_home', icon: ICONS.home },
@@ -205,13 +211,13 @@ function renderAppHeader(activePage, role, onLangChange) {
 
   header.innerHTML = `
     <div class="container app-header-inner">
-      <a href="${ROLE_HOME[role] || 'index.html'}" class="logo">
+      <a href="${pageUrl(ROLE_HOME[role] || 'home')}" class="logo">
         <span class="logo-main">I2ENF</span>
         <span class="logo-sub">SOFIFRAN</span>
       </a>
       <nav class="app-nav" aria-label="${t(NAV_LABELS[role] || 'app_nav_label_entrepreneur')}">
         ${items.map((item) => `
-          <a href="${item.href}" class="${item.page === activePage ? 'active' : ''}" ${item.page === activePage ? 'aria-current="page"' : ''}>
+          <a href="${pageUrl(item.page)}" class="${item.page === activePage ? 'active' : ''}" ${item.page === activePage ? 'aria-current="page"' : ''}>
             ${item.icon}<span>${t(item.key)}</span>
           </a>`).join('')}
       </nav>
@@ -234,15 +240,15 @@ function renderAppHeader(activePage, role, onLangChange) {
       onLangChange();
     });
   });
+  // "Déconnexion" simply goes back to the public home page
   header.querySelector('#logout-btn').addEventListener('click', () => {
-    clearSession();
-    window.location.href = 'index.html';
+    window.location.href = pageUrl('home');
   });
 }
 
 // Pages can also write their own header in the HTML (for example with folder paths
 // like ../enterpreneur/dashboard.html). Then we keep that header and only fill in
-// the user's name and connect the language and log-out buttons.
+// the person's name and connect the language and "Déconnexion" buttons.
 function connectStaticHeader(onLangChange) {
   const header = document.querySelector('.app-header');
   if (!header) return;
@@ -262,18 +268,15 @@ function connectStaticHeader(onLangChange) {
     });
   });
 
-  // Log out: clear the session, then a link continues to its own page (e.g. ../auth/login.html)
+  // "Déconnexion": a link goes to its own page; a button goes to the public home page
   const logout = header.querySelector('#logout-btn');
-  if (logout && !logout.dataset.connected) {
+  if (logout && logout.tagName !== 'A' && !logout.dataset.connected) {
     logout.dataset.connected = 'true';
-    logout.addEventListener('click', () => {
-      clearSession();
-      if (logout.tagName !== 'A') window.location.href = 'index.html';
-    });
+    logout.addEventListener('click', () => { window.location.href = pageUrl('home'); });
   }
 }
 
-// ---- Per-user storage (demo) ----
+// ---- Per-person storage (demo) ----
 const userKey = (name) => `i2enf_${name}_${APP_SESSION ? APP_SESSION.email : 'demo'}`;
 function readStore(name, fallback) {
   try {

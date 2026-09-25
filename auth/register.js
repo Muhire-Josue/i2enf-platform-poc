@@ -2,6 +2,22 @@
 
 const PASSWORD_RULE = /^(?=.*[A-Za-zÀ-ÿ])(?=.*\d).{8,}$/;
 
+// Accepts "www.exemple.ca" or "exemple.ca" as well as full addresses:
+// adds https:// when missing, then checks it's a real-looking web address.
+// Returns the cleaned-up address, or null if it isn't valid.
+function normalizeWebsite(value) {
+  const raw = value.trim();
+  if (!raw) return '';
+  const withScheme = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+  try {
+    const url = new URL(withScheme);
+    const validHost = /^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/i.test(url.hostname);
+    return validHost ? url.href.replace(/\/$/, '') : null;
+  } catch {
+    return null;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('register-form');
   const roleFieldsets = form.querySelectorAll('.role-fields');
@@ -77,6 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // Optional website: only checked when something was typed
+    const websiteField = role === 'entrepreneur' ? form.siteEntreprise : role === 'mentor' ? form.siteOrganisation : null;
+    const website = websiteField ? normalizeWebsite(websiteField.value) : '';
+    if (website === null) {
+      errors.add('err_website');
+      markInvalid(websiteField, true);
+    }
+
     if (role === 'staff' && val('codeInvitation') && val('codeInvitation').toUpperCase() !== STAFF_INVITE_CODE) {
       errors.add('err_invite_code');
       markInvalid(form.codeInvitation, true);
@@ -109,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (role === 'entrepreneur') {
       Object.assign(user, {
         entreprise: val('entreprise'),
+        siteWeb: website,
         secteur: val('secteur'),
         stade: val('stade'),
         statut: val('statut'),
@@ -123,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (role === 'mentor') {
       Object.assign(user, {
         organisation: val('organisation'),
+        siteWeb: website,
         expertise: checked('expertise'),
         experience: val('experience'),
         disponibilite: val('disponibilite'),
@@ -138,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.querySelector('.auth-submit').disabled = true;
 
     setTimeout(() => {
-      window.location.href = `login.html?registered=1&email=${encodeURIComponent(user.email)}`;
+      window.location.href = `${pageUrl('login')}?registered=1&email=${encodeURIComponent(user.email)}`;
     }, 1600);
   });
 });

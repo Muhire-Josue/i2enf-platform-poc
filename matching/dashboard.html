@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jumelage — I2ENF</title>
+  <!-- Bootstrap (banners only) first, so the site's own styles take priority -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/style.css">
+  <link rel="stylesheet" href="../shared/app.css">
+  <link rel="stylesheet" href="matching.css">
+</head>
+<body class="app-page">
+
+  <header class="app-header" id="app-header"></header>
+
+  <main class="container page">
+    <section class="page-head">
+      <div class="page-head-text">
+        <span class="kicker" data-i18n="staff_kicker">Espace personnel</span>
+        <h1 data-i18n="mt_title">Jumelage mentor-entrepreneur</h1>
+        <p id="mt-intro"></p>
+      </div>
+    </section>
+
+    <div id="page-alerts" aria-live="polite"></div>
+
+    <section class="mt-stats" id="mt-stats" aria-label="Résumé"></section>
+
+    <div class="mt-grid">
+      <section class="dash-card">
+        <div class="card-head">
+          <h2 data-i18n="mt_to_match">À jumeler</h2>
+          <span class="card-count" id="mt-to-match-count"></span>
+        </div>
+        <div class="mt-people" id="mt-people" role="radiogroup" aria-labelledby="mt-to-match-title"></div>
+
+        <div class="mt-recent" id="mt-recent-block">
+          <h3 data-i18n="mt_recent">Jumelages récents</h3>
+          <ul class="mt-recent-list" id="mt-recent"></ul>
+        </div>
+      </section>
+
+      <section class="dash-card" id="mt-suggestions-card">
+        <div class="card-head">
+          <h2 id="mt-suggestions-title"></h2>
+        </div>
+        <p class="card-sub" data-i18n="mt_score_help">Le score tient compte de l'expertise du mentor dans les domaines prioritaires du diagnostic, de la langue et des places disponibles.</p>
+        <ul class="mt-suggestions" id="mt-suggestions"></ul>
+      </section>
+    </div>
+
+    <section class="dash-card">
+      <div class="card-head">
+        <h2 data-i18n="mt_pool">Bassin de mentors</h2>
+        <span class="card-count" id="mt-pool-count"></span>
+      </div>
+      <div class="mt-pool-head" aria-hidden="true">
+        <span data-i18n="mt_col_mentor">Mentor</span>
+        <span data-i18n="mt_col_expertise">Expertise</span>
+        <span data-i18n="mt_col_languages">Langues</span>
+        <span data-i18n="mt_col_load">Entrepreneurs suivis</span>
+      </div>
+      <ul class="mt-pool" id="mt-pool"></ul>
+    </section>
+  </main>
+
+  <!-- Confirm a pairing -->
+  <dialog class="app-dialog" id="match-dialog" aria-labelledby="match-title">
+    <form method="dialog">
+      <h2 id="match-title" data-i18n="mt_confirm_title">Confirmer le jumelage?</h2>
+      <p id="match-text"></p>
+      <div class="form-field">
+        <label for="match-message" data-i18n="mt_message">Message d'introduction (facultatif)</label>
+        <textarea id="match-message" rows="3" data-i18n-placeholder="mt_message_ph" placeholder="Envoyé aux deux personnes avec leurs coordonnées"></textarea>
+      </div>
+      <div class="dialog-actions">
+        <button type="submit" value="cancel" class="btn-outline" data-i18n="mt_cancel">Annuler</button>
+        <button type="submit" value="confirm" class="btn-primary" data-i18n="mt_confirm">Confirmer le jumelage</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../shared/i18n.js"></script>
+  <script src="../shared/mock-data.js"></script>
+  <script src="../shared/alerts.js"></script>
+  <script src="../shared/app.js"></script>
+  <script src="../shared/staff.js"></script>
+  <script src="matching.js"></script>
+</body>
+</html>

@@ -213,6 +213,8 @@ const dateBlock = (d) => `<span class="event-date"><span class="event-day">${d.g
 
 // ---- Rendering ----
 function renderHead() {
+  document.getElementById('ad-week-link').href = pageUrl('scheduling');
+  document.getElementById('ad-cohort-link').href = pageUrl('kpi');
   document.getElementById('ad-hello').textContent = t('ad_hello', { name: APP_SESSION.prenom || '' });
   document.getElementById('ad-intro').textContent = cohortLabel('ad_intro');
 }
@@ -223,10 +225,10 @@ function renderStats() {
   const watch = 1 + (agreementSigned() ? 0 : 1); // Fatou (late milestone) + Amélie while unsigned
   const next = events()[0];
   const stats = [
-    { href: 'applications.html', icon: AD_ICONS.inbox, label: t('ad_stat_review'), value: toReview, note: t('ad_stat_review_note'), cls: toReview ? 'is-alert' : '' },
-    { href: 'matching.html', icon: AD_ICONS.pair, label: t('ad_stat_match'), value: toMatch, note: t('ad_stat_match_note'), cls: toMatch ? 'is-alert' : '' },
-    { href: 'cases.html', icon: AD_ICONS.alert, label: t('ad_stat_risk'), value: AT_RISK.length, note: watch === 1 ? t('ad_stat_risk_note_one') : t('ad_stat_risk_note', { n: watch }), cls: 'is-risk' },
-    { href: 'scheduling.html', icon: AD_ICONS.calendar, label: t('ad_stat_event'), value: next ? shortDay(next.start) : '—', note: next ? eventTitle(next) : '' },
+    { href: pageUrl('applications'), icon: AD_ICONS.inbox, label: t('ad_stat_review'), value: toReview, note: t('ad_stat_review_note'), cls: toReview ? 'is-alert' : '' },
+    { href: pageUrl('matching'), icon: AD_ICONS.pair, label: t('ad_stat_match'), value: toMatch, note: t('ad_stat_match_note'), cls: toMatch ? 'is-alert' : '' },
+    { href: pageUrl('cases'), icon: AD_ICONS.alert, label: t('ad_stat_risk'), value: AT_RISK.length, note: watch === 1 ? t('ad_stat_risk_note_one') : t('ad_stat_risk_note', { n: watch }), cls: 'is-risk' },
+    { href: pageUrl('scheduling'), icon: AD_ICONS.calendar, label: t('ad_stat_event'), value: next ? shortDay(next.start) : '—', note: next ? eventTitle(next) : '' },
   ];
   document.getElementById('ad-stats').innerHTML = stats.map((s) => `
     <a href="${s.href}" class="ad-stat ${s.cls || ''}">
@@ -242,21 +244,21 @@ function renderStats() {
 function todoItems() {
   const items = [];
   const apps = applicationsToReview();
-  if (apps.length) items.push({ level: 'high', icon: AD_ICONS.inbox, href: 'applications.html', action: 'ad_review',
+  if (apps.length) items.push({ level: 'high', icon: AD_ICONS.inbox, href: pageUrl('applications'), action: 'ad_review',
     title: apps.length === 1 ? t('ad_todo_review_one') : t('ad_todo_review', { n: apps.length }),
     sub: t('ad_todo_review_sub', { name: escapeHtml(apps[0].name), when: relativeDay(apps[0].date) }) });
-  items.push({ level: 'urgent', icon: AD_ICONS.alert, href: 'cases.html', action: 'ad_follow',
+  items.push({ level: 'urgent', icon: AD_ICONS.alert, href: pageUrl('cases'), action: 'ad_follow',
     title: t('ad_todo_risk', { n: AT_RISK.length }), sub: t('ad_todo_risk_sub', { names: AT_RISK.join(', ') }) });
   const people = peopleToMatch();
-  if (people.length) items.push({ level: 'high', icon: AD_ICONS.pair, href: 'matching.html', action: 'ad_match',
+  if (people.length) items.push({ level: 'high', icon: AD_ICONS.pair, href: pageUrl('matching'), action: 'ad_match',
     title: people.length === 1 ? t('ad_todo_match_one') : t('ad_todo_match', { n: people.length }),
     sub: t('ad_todo_match_sub', { name: escapeHtml(people[0].name) }) });
-  if (!agreementSigned()) items.push({ level: 'normal', icon: AD_ICONS.pen, href: 'cases.html', action: 'ad_open',
+  if (!agreementSigned()) items.push({ level: 'normal', icon: AD_ICONS.pen, href: pageUrl('cases'), action: 'ad_open',
     title: t('ad_todo_agreement'), sub: t('ad_todo_agreement_sub') });
-  if (notesPending()) items.push({ level: 'normal', icon: AD_ICONS.notes, href: 'cases.html', action: 'ad_open',
+  if (notesPending()) items.push({ level: 'normal', icon: AD_ICONS.notes, href: pageUrl('cases'), action: 'ad_open',
     title: t('ad_todo_notes'), sub: t('ad_todo_notes_sub', { when: relativeDay(daysFromNow(-2)) }) });
   const info = events().find((e) => e.id === 'e2');
-  if (info && info.registered / info.capacity < 0.6) items.push({ level: 'normal', icon: AD_ICONS.calendar, href: 'scheduling.html', action: 'ad_open',
+  if (info && info.registered / info.capacity < 0.6) items.push({ level: 'normal', icon: AD_ICONS.calendar, href: pageUrl('scheduling'), action: 'ad_open',
     title: t('ad_todo_event', { n: info.registered, max: info.capacity }), sub: t('ad_todo_event_sub', { date: longDay(info.start) }) });
   return items;
 }

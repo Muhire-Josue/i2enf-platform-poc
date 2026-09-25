@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Événements — I2ENF</title>
+  <!-- Bootstrap (banners only) first, so the site's own styles take priority -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/style.css">
+  <link rel="stylesheet" href="../shared/app.css">
+  <link rel="stylesheet" href="scheduling.css">
+</head>
+<body class="app-page">
+
+  <header class="app-header" id="app-header"></header>
+
+  <main class="container page">
+    <section class="page-head">
+      <div class="page-head-text">
+        <span class="kicker" data-i18n="staff_kicker">Espace personnel</span>
+        <h1 data-i18n="sch_title">Ateliers et événements</h1>
+        <p id="sch-intro"></p>
+      </div>
+      <div class="page-actions">
+        <button type="button" class="btn-primary" id="open-create" data-i18n="sch_create">Créer un événement</button>
+      </div>
+    </section>
+
+    <div id="page-alerts" aria-live="polite"></div>
+
+    <section class="sch-stats" id="sch-stats" aria-label="Résumé"></section>
+
+    <section class="dash-card">
+      <div class="card-head">
+        <h2 data-i18n="sch_upcoming">À venir</h2>
+        <span class="card-count" id="sch-upcoming-count"></span>
+      </div>
+      <ul class="sch-list" id="sch-upcoming"></ul>
+    </section>
+
+    <section class="dash-card">
+      <div class="card-head">
+        <h2 data-i18n="sch_past">Terminés</h2>
+      </div>
+      <ul class="sch-list" id="sch-past"></ul>
+    </section>
+  </main>
+
+  <!-- Create an event -->
+  <dialog class="app-dialog sch-dialog" id="create-dialog" aria-labelledby="create-title">
+    <form method="dialog" id="create-form" novalidate>
+      <h2 id="create-title" data-i18n="sch_create">Créer un événement</h2>
+
+      <ul class="sch-errors" id="create-errors" role="alert" hidden></ul>
+
+      <div class="form-field">
+        <label for="ev-title" data-i18n="sch_f_title">Titre</label>
+        <input id="ev-title" type="text" data-i18n-placeholder="sch_f_title_ph" placeholder="Ex. : Atelier sur le financement">
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="ev-type" data-i18n="sch_f_type">Type</label>
+          <select id="ev-type"></select>
+        </div>
+        <div class="form-field">
+          <label for="ev-host" data-i18n="sch_f_host">Animé par</label>
+          <input id="ev-host" type="text" data-i18n-placeholder="sch_f_host_ph" placeholder="Nom de la personne ou de l'équipe">
+        </div>
+      </div>
+      <div class="form-row sch-row-3">
+        <div class="form-field">
+          <label for="ev-date" data-i18n="sch_f_date">Date</label>
+          <input id="ev-date" type="date">
+        </div>
+        <div class="form-field">
+          <label for="ev-time" data-i18n="sch_f_time">Heure</label>
+          <input id="ev-time" type="time" value="18:00">
+        </div>
+        <div class="form-field">
+          <label for="ev-duration" data-i18n="sch_f_duration">Durée</label>
+          <select id="ev-duration"></select>
+        </div>
+      </div>
+      <div class="form-field">
+        <span class="field-label" data-i18n="sch_f_format">Format</span>
+        <div class="choice-row" id="ev-format">
+          <label class="check-field"><input type="radio" name="ev-format" value="online" checked><span data-i18n="sch_online">En ligne</span></label>
+          <label class="check-field"><input type="radio" name="ev-format" value="inperson"><span data-i18n="sch_inperson">En personne</span></label>
+        </div>
+      </div>
+      <div class="form-field" id="ev-place-field" hidden>
+        <label for="ev-place" data-i18n="sch_f_place">Lieu</label>
+        <input id="ev-place" type="text" value="150, rue Metcalfe, Ottawa">
+      </div>
+      <div class="form-field sch-capacity">
+        <label for="ev-capacity" data-i18n="sch_f_capacity">Nombre de places</label>
+        <input id="ev-capacity" type="number" min="5" max="200" value="20">
+      </div>
+
+      <div class="dialog-actions">
+        <button type="submit" value="cancel" class="btn-outline" data-i18n="sch_cancel_form">Annuler</button>
+        <button type="button" class="btn-primary" id="create-save" data-i18n="sch_publish">Publier l'événement</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Registrants -->
+  <dialog class="app-dialog sch-dialog" id="people-dialog" aria-labelledby="people-title">
+    <form method="dialog">
+      <h2 id="people-title"></h2>
+      <p id="people-meta"></p>
+      <ul class="sch-people" id="people-list"></ul>
+      <div class="dialog-actions">
+        <button type="submit" value="close" class="btn-outline" data-i18n="sch_close">Fermer</button>
+        <button type="submit" value="remind" class="btn-primary" id="people-remind" data-i18n="sch_remind">Envoyer un rappel aux inscrits</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Cancel confirmation -->
+  <dialog class="app-dialog" id="cancel-dialog" aria-labelledby="cancel-title">
+    <form method="dialog">
+      <h2 id="cancel-title" data-i18n="sch_cancel_title">Annuler cet événement?</h2>
+      <p id="cancel-text"></p>
+      <div class="dialog-actions">
+        <button type="submit" value="keep" class="btn-outline" data-i18n="sch_keep">Garder l'événement</button>
+        <button type="submit" value="confirm" class="btn-primary" data-i18n="sch_cancel_confirm">Annuler l'événement</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../shared/i18n.js"></script>
+  <script src="../shared/mock-data.js"></script>
+  <script src="../shared/alerts.js"></script>
+  <script src="../shared/app.js"></script>
+  <script src="../shared/staff.js"></script>
+  <script src="scheduling.js"></script>
+</body>
+</html>
