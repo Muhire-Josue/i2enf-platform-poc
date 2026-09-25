@@ -232,7 +232,7 @@ function renderSession() {
       <div><strong>${mentor.name}</strong><small>${t(mentor.titleKey)}</small></div>
     </div>
     <div class="session-actions">
-      <a href="mentorship.html" class="btn-primary">${t('dash_join')}</a>
+      <a href="mentorship/dashboard.html" class="btn-primary">${t('dash_join')}</a>
       <a href="book-session.html?reschedule=${encodeURIComponent(s.id)}" class="btn-outline-light">${t('dash_reschedule')}</a>
     </div>`;
 }

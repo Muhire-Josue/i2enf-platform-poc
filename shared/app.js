@@ -192,8 +192,8 @@ function initAppPage({ page, role = 'entrepreneur', render, setup }) {
 const NAV_ITEMS = {
   entrepreneur: [
     { page: 'dashboard', href: 'dashboard.html', key: 'app_nav_home', icon: ICONS.home },
-    { page: 'diagnostic', href: 'diagnostic.html', key: 'app_nav_diagnostic', icon: ICONS.diagnostic },
-    { page: 'mentorship', href: 'mentorship.html', key: 'app_nav_mentorship', icon: ICONS.mentor },
+    { page: 'diagnostic', href: 'diagnostic/dashboard.html', key: 'app_nav_diagnostic', icon: ICONS.diagnostic },
+    { page: 'mentorship', href: 'mentorship/dashboard.html', key: 'app_nav_mentorship', icon: ICONS.mentor },
     { page: 'business-file', href: 'business-file/dashboard.html', key: 'app_nav_file', icon: ICONS.folder },
   ],
   mentor: [
