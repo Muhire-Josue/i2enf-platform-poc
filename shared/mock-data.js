@@ -71,8 +71,8 @@ const PAGES = {
   'mentor-dashboard': 'mentor/mentor-dashboard.html', // ← check
   // Staff
   admin: 'admin/admin.html',
-  applications: 'admin/applications.html',            // ← check
-  cases: 'admin/cases.html',                          // ← check
+  applications: 'applications/dashboard.html',            // ← check
+  cases: 'cases/dashboard.html',                          // ← check
   scheduling: 'admin/scheduling.html',                // ← check
   matching: 'admin/matching.html',                    // ← check
   kpi: 'admin/kpi-dashboard.html',                    // ← check
