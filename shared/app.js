@@ -194,7 +194,7 @@ const NAV_ITEMS = {
     { page: 'dashboard', href: 'dashboard.html', key: 'app_nav_home', icon: ICONS.home },
     { page: 'diagnostic', href: 'diagnostic.html', key: 'app_nav_diagnostic', icon: ICONS.diagnostic },
     { page: 'mentorship', href: 'mentorship.html', key: 'app_nav_mentorship', icon: ICONS.mentor },
-    { page: 'business-file', href: 'business-file.html', key: 'app_nav_file', icon: ICONS.folder },
+    { page: 'business-file', href: 'business-file/dashboard.html', key: 'app_nav_file', icon: ICONS.folder },
   ],
   mentor: [
     { page: 'mentor-dashboard', href: 'mentor-dashboard.html', key: 'app_nav_home', icon: ICONS.home },

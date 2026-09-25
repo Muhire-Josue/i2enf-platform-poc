@@ -60,22 +60,23 @@ function registerUser(user) {
 const PAGES = {
   home: 'index.html',
   login: 'auth/login.html',
-  register: 'auth/register.html',                     // ← check
+  register: 'auth/register.html',
   // Entrepreneur
   dashboard: 'enterpreneur/dashboard.html',
-  diagnostic: 'diagnostic/dashboard.html',            // ← check
+  diagnostic: 'diagnostic/dashboard.html',
   mentorship: 'mentorship/dashboard.html',
-  'book-session': 'mentorship/dashboard.html',     // ← check
+  'book-session': 'book-session/dashboard.html',
   'business-file': 'business-files/dashboard.html',
   // Mentor
-  'mentor-dashboard': 'mentor/mentor-dashboard.html', // ← check
+  'mentor-dashboard': 'mentor/dashboard.html',
   // Staff
   admin: 'admin/admin.html',
-  applications: 'applications/dashboard.html',            // ← check
-  cases: 'cases/dashboard.html',                          // ← check
-  matching: 'matching/dashboard.html',                    // ← check
-  kpi: 'kpi/dashboard.html',                    // ← check
-};  
+  applications: 'applications/dashboard.html',
+  cases: 'cases/dashboard.html',
+  scheduling: 'events/dashboard.html',
+  matching: 'matching/dashboard.html',
+  kpi: 'kpi/dashboard.html',
+};
 
 // The project root, worked out from where this file is loaded (…/shared/mock-data.js),
 // so links work from any folder, on Live Server and on GitHub Pages
